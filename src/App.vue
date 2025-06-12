@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
-import ovBody from './components/layout/Body.vue';
-import ovHeader from './components/layout/header/Header.vue';
-import ovSidebar from './components/layout/sidebar/Sidebar.vue';
+import ovBody from './components/layout/body.vue';
+import ovHeader from './components/layout/header/header.vue';
+import ovSidebar from './components/layout/sidebar/sidebar.vue';
 
 </script>
 
