@@ -7,12 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1e40af', // Example blue
-        secondary: '#f59e42', // Example orange
-        accent: '#10b981', // Example green
-        customgray: '#374151', // Example gray
-      },
+        'ae-black' : '#171315',
+        'ae-grey': '#2E2C2B',
+        'ae-blue': '#14377B',
+        'ae-lightgrey': '#938E8D',
+        'ae-midgrey': '#6D6968',
+        'ae-green': '#217A30'
+    },
     },
   },
   plugins: [],
 };
+

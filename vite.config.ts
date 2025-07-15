@@ -6,4 +6,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: '/OV-GUISERVER/',
   plugins: [vue(), tailwindcss(),],
+  resolve: {
+    alias: {
+      '@': '/src',
+    }
+  },
 })
