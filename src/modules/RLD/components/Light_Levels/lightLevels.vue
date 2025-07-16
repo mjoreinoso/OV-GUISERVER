@@ -1,0 +1,31 @@
+<template>
+    <div class="flex flex-col space-y-3 w-[45%] self-stretch">
+        <div class="text-2xl font-bold">Light Levels</div>
+        <div
+            class="grid grid-cols-[auto_1fr_1fr_1fr] gap-x-3 place-items-center gap-y-5 text-white text-xl p-3 border-2 h-full rounded-xl">
+
+            <!-- Encabezado -->
+            <div></div>
+            <div class="font-bold text-center">Current</div>
+            <div class="font-bold text-center">Average</div>
+            <div class="font-bold text-center">Last Detected</div>
+
+            <!-- IR RLD Sensor -->
+            <div class="flex items-center">IR RLD Sensor</div>
+            <valueViewer />
+            <valueViewer />
+            <valueViewer />
+
+            <!-- RF RLD Sensor -->
+            <div class="flex items-center">RF RLD Sensor</div>
+            <valueViewer />
+            <valueViewer />
+            <valueViewer />
+
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import valueViewer from '../../../../assets/vueComponents/inputs/valueViewer.vue';
+</script>

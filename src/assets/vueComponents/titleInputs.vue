@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-row grow justify-between items-center p-2">
-        <div class="text-[1.35vw] w-[50%]">{{ props.title }}</div>
+        <div class="text-xl w-[50%]">{{ props.title }}</div>
         <numberInput
             v-model="inputValue"
             :placeholder="props.placeholder"
