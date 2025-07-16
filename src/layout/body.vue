@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-primary h-full w-full rounded-lg">
+    <div class="bg-primary h-full w-full rounded-lg p-3">
         <RLD />
     </div>
 </template>
