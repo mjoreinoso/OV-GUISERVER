@@ -1,8 +1,8 @@
 <template>
-  <div class="relative flex flex-row text-[9mm] h-[15mm]">
+  <div class="relative flex flex-row text-[9mm] h-[15mm] max-2xl:h-[10mm]">
     <!-- Botón de decremento -->
     <div
-      class="bg-[#14377B] w-[12mm] rounded-l-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
+      class="bg-[#14377B] w-[12mm] max-2xl:w-[8mm] rounded-l-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
       @mousedown="startDecrement"
       @mouseup="stopAction"
       @mouseleave="stopAction"
@@ -16,7 +16,7 @@
     <!-- Input que abre el numpad -->
     <input
       readonly
-      class="bg-white self-stretch text-black w-[20mm] text-center outline-none text-[6.5mm] border-2 transition-all duration-200 cursor-pointer"
+      class="bg-white self-stretch text-black w-[20mm] max-2xl:w-[16mm] text-center outline-none text-[6.5mm] max-2xl:text-[5mm] border-2 transition-all duration-200 cursor-pointer"
       :class="{
         'cursor-not-allowed opacity-50': disabled,
         'border-yellow-400 bg-yellow-200 shadow-xs shadow-yellow-400': confirmOnEnter && hasPendingChange,
@@ -29,7 +29,7 @@
 
     <!-- Botón de incremento -->
     <div
-      class="bg-[#14377B] w-[12mm] rounded-r-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
+      class="bg-[#14377B] w-[12mm] max-2xl:w-[8mm] rounded-r-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
       @mousedown="startIncrement"
       @mouseup="stopAction"
       @mouseleave="stopAction"

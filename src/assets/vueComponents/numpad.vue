@@ -8,13 +8,13 @@
             <div class="relative z-10 bg-[#120f10] rounded-2xl p-4 w-fit h-fit space-y-2 text-white">
 
                 <!-- Título -->
-                <div class="text-center text-xl">
-                    <p class="font-semibold text-2xl">Enter the value for</p>
+                <div class="text-center text-[1.2vw]">
+                    <p class="font-semibold text-[1.4vw]">Enter the value for</p>
                     <p class="italic text-blue-400">{{ name }}</p>
                 </div>
 
                 <!-- Rango permitido -->
-                <div class="text-center text-xl text-gray-300">
+                <div class="text-center text-[1.2vw] text-gray-300">
                     From <span class="font-bold">{{ min }}</span> to <span class="font-bold">{{ max }}</span>
                 </div>
 
