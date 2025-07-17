@@ -1,14 +1,12 @@
 <template>
-    <div class="flex flex-row grow justify-between items-center p-2">
-        <div class="text-[1.2vw] w-[50%]">{{ props.title }}</div>
-        <numberInput
-            v-model="inputValue"
-            :placeholder="props.placeholder"
-            @update:modelValue="emit('update:value', $event)"
-            :name="props.title"
-            :disabled="false"
-        />
+  <div class="flex flex-row grow justify-between items-center p-2">
+    <div class="text-[1.2vw]">{{ props.title }}</div>
+    <div>
+      <numberInput v-model="inputValue" :placeholder="props.placeholder"
+        @update:modelValue="emit('update:value', $event)" :name="props.title" :disabled="false" :min="props.min"
+        :max="props.max" />
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -19,6 +17,8 @@ const props = defineProps<{
   title: string;
   placeholder: string;
   value: string;
+  min?: number;
+  max?: number;
 }>();
 
 const emit = defineEmits<{

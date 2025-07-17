@@ -3,7 +3,7 @@
     <input
       readonly
       :value="''"
-      class="bg-white text-black w-[44mm] h-[15mm] max-2xl:h-[10mm] max-2xl:w-[32mm] text-center text-[6.5mm] rounded-lg pointer-events-none select-none"
+      class="bg-white text-black w-full h-[5vh] text-center text-[6.5mm] rounded-lg pointer-events-none select-none"
     />
   </div>
 </template>

@@ -1,29 +1,22 @@
 <template>
-    <div class="space-y-3 w-[55%] h-full flex flex-col">
-        <div class="text-[1.4vw] font-bold">IR RLD</div>
-        <div class="flex flex-col space-y-5 p-2 border-2 flex-1 rounded-xl">
-            <div class="grid grid-cols-2 gap-2">
-                <titleInputs title="Brightness" placeholder="Enter brightness value" value="100"
-                    @update:value="value => console.log(value)" />
-                <titleInputs title="Sensitivity" placeholder="Enter zoom value" value="1.0"
-                    @update:value="value => console.log(value)" />
+    <div class="flex flex-col w-full h-full justify-around space-y-3">
+        <div class="flex flex-row space-x-3">
+            <div class="flex flex-col  self-stretch space-y-3">
+                <IR />
+                <LightLevels />
             </div>
-
-            <LED_Strobe_Timing/>
-
-            <div class="grid grid-cols-2 gap-2">
-
-                <titleInputs title="Detection Threshold" placeholder="Enter zoom value" value="1.0"
-                    @update:value="value => console.log(value)" />
-                <TitleSelects title="Reject Type" value="Auto" @update:value="value => console.log(value)" />
-            </div>
+            <LED_Strobe_Timing />
+        </div>
+        <div>
+            <Graph />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import titleInputs from '../../../../assets/vueComponents/titleInputs.vue';
-import TitleSelects from '../../../../assets/vueComponents/titleSelects.vue';
+import Graph from './components/graph.vue';
+import IR from './components/IR.vue';
 import LED_Strobe_Timing from './components/LED_Strobe_Timing.vue';
+import LightLevels from './components/lightLevels.vue';
 
 </script>
