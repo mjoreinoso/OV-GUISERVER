@@ -2,7 +2,7 @@
   <Line :data="data" :options="options" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Line } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -77,7 +77,7 @@ const options = {
         color: '#FFFFFF',
         font: {
           size: 16,
-          weight: 'bold'
+          weight: 'bold' as const
         }
       },
       ticks: {
@@ -94,7 +94,7 @@ const options = {
         color: '#FFFFFF',
         font: {
           size: 16,
-          weight: 'bold'
+          weight: 'bold' as const
         }
       },
       ticks: {
