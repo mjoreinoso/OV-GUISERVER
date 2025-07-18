@@ -1,4 +1,5 @@
 <template>
+    <!--
     <div class="space-y-3 w-[55%] flex flex-col">
         <div class="text-[1.4vw] font-bold">RF RLD (Caustic)</div>
         <div class="flex flex-col space-y-2 p-2 border-2 rounded-xl">
@@ -23,10 +24,10 @@
 
         </div>
     </div>
+    -->
 </template>
 
 <script setup lang="ts">
-import titleSelects from '../../../../assets/vueComponents/titleSelects.vue';
-import titleInputs from '../../../../assets/vueComponents/titleInputs.vue';
-
+// import titleSelects from '../../../../assets/vueComponents/titleSelects.vue';
+// import titleInputs from '../../../../assets/vueComponents/titleInputs.vue';
 </script>

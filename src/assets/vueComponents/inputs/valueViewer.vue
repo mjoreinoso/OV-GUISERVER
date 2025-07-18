@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex items-center text-[9mm] ">
+  <div class="flex items-center text-[9mm] ">
     <input
       readonly
       :value="''"
