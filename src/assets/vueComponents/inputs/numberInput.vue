@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-row text-[9mm] h-[5vh]">
+  <div class="flex flex-row text-[9mm] h-[5vh]">
     <!-- Botón de decremento -->
     <div
       class="bg-secondary  w-[2.5vw] rounded-l-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
