@@ -22,16 +22,16 @@ const { compArray, irArray, irTotArray, avgArray } = storeToRefs(irStore);
     <!-- IR RLD Sensor -->
     <div class="flex items-center">IR RLD Sensor</div>
     <div class="flex justify-center">
-      <valueViewer :value="irArray[0]?.[0] ?? null" />
+      <valueViewer :value="irArray[0] ?? null" />
     </div>
     <div class="flex justify-center">
-      <valueViewer :value="compArray[0]?.[0] ?? null" />
+      <valueViewer :value="compArray[0] ?? null" />
     </div>
     <div class="flex justify-center">
-      <valueViewer :value="avgArray[0]?.[0] ?? null" />
+      <valueViewer :value="avgArray[0] ?? null" />
     </div>
     <div class="flex justify-center">
-      <valueViewer :value="irTotArray[0]?.[0] ?? null" />
+      <valueViewer :value="irTotArray[0] ?? null" />
     </div>
   </div>
 </template>
