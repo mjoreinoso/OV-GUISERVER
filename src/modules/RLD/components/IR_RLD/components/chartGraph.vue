@@ -44,10 +44,10 @@ watch(
   (newIR) => {
     if (!newIR.length) return
 
-    const ir = newIR[0]?.[0]
-    const comp = irStore.compArray[0]?.[0]
-    const avg = irStore.avgArray[0]?.[0]
-    const irTot = irStore.irTotArray[0]?.[0]
+    const ir = newIR[0]
+    const comp = irStore.compArray[0]
+    const avg = irStore.avgArray[0]
+    const irTot = irStore.irTotArray[0]
 
     if (
       ir !== undefined &&
@@ -69,7 +69,6 @@ watch(
         irTotData.value.push(irTot)
         labels.value.push(`${time++}s`)
 
-        // Limitar longitud máxima si se desea
         const MAX_POINTS = 60
         if (irData.value.length > MAX_POINTS) {
           irData.value.shift()
