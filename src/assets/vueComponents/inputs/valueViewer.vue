@@ -9,11 +9,13 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue';
+
+const props = defineProps<{
   value: number | string | null;
 }>();
 
 const displayValue = computed(() => {
-  return typeof value === 'number' ? value.toFixed(2) : value ?? '';
+  return typeof props.value === 'number' ? props.value.toFixed(2) : props.value ?? '';
 });
 </script>
