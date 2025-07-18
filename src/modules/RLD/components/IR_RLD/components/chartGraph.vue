@@ -38,39 +38,43 @@ const irTotData = ref<number[]>([])
 const labels = ref<string[]>([])
 let time = 0
 
-// Lógica de actualización progresiva
+// Lógica de actualización con debounce y comparación
+let lastValues = {
+  ir: null as number | null,
+  comp: null as number | null,
+  avg: null as number | null,
+  irTot: null as number | null
+}
+
+let timeout: ReturnType<typeof setTimeout> | null = null
+
 watch(
   () => irStore.irArray,
-  (newIR) => {
-    if (!newIR.length) return
+  () => {
+    if (timeout) clearTimeout(timeout)
 
-    const ir = newIR[0]
-    const comp = irStore.compArray[0]
-    const avg = irStore.avgArray[0]
-    const irTot = irStore.irTotArray[0]
+    timeout = setTimeout(() => {
+      const ir = irStore.irArray[0]
+      const comp = irStore.compArray[0]
+      const avg = irStore.avgArray[0]
+      const irTot = irStore.irTotArray[0]
 
-    if (
-      ir !== undefined &&
-      comp !== undefined &&
-      avg !== undefined &&
-      irTot !== undefined
-    ) {
-      const lastIndex = irData.value.length - 1
-      const shouldAdd =
-        irData.value[lastIndex] !== ir ||
-        compData.value[lastIndex] !== comp ||
-        avgData.value[lastIndex] !== avg ||
-        irTotData.value[lastIndex] !== irTot
-
-      if (shouldAdd) {
+      if (
+        ir !== lastValues.ir ||
+        comp !== lastValues.comp ||
+        avg !== lastValues.avg ||
+        irTot !== lastValues.irTot
+      ) {
         irData.value.push(ir)
         compData.value.push(comp)
         avgData.value.push(avg)
         irTotData.value.push(irTot)
         labels.value.push(`${time++}s`)
 
-        const MAX_POINTS = 60
-        if (irData.value.length > MAX_POINTS) {
+        lastValues = { ir, comp, avg, irTot }
+
+        const MAX = 60
+        if (irData.value.length > MAX) {
           irData.value.shift()
           compData.value.shift()
           avgData.value.shift()
@@ -78,9 +82,9 @@ watch(
           labels.value.shift()
         }
       }
-    }
+    }, 50)
   },
-  { deep: true }
+  { flush: 'post' }
 )
 
 // Datos para la gráfica
