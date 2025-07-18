@@ -1,5 +1,5 @@
 // src/socket.ts
-import { io, Socket } from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 const URL = import.meta.env.VITE_SERVER_DOMAIN;
 export const socket = io(URL, {
