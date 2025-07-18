@@ -20,6 +20,12 @@ export const useIRStore = defineStore("irStore", {
   state: () => ({
     irData: [] as IRDataItem[],
     isLoading: false,
+
+    // Nuevos estados para los arrays en tiempo real
+    compArray: [] as number[][],
+    irArray: [] as number[][],
+    irTotArray: [] as number[][],
+    avgArray: [] as number[][],
   }),
 
   actions: {
@@ -35,5 +41,19 @@ export const useIRStore = defineStore("irStore", {
         this.isLoading = false;
       }
     },
+
+    // Nueva acción para guardar los datos del socket
+    updateLiveIRResults(payload: {
+      comp: number[][];
+      ir: number[][];
+      irTot: number[][];
+      average: number[][];
+    }) {
+      this.compArray = payload.comp;
+      this.irArray = payload.ir;
+      this.irTotArray = payload.irTot;
+      this.avgArray = payload.average;
+    },
   },
 });
+
