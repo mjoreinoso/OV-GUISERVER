@@ -31,12 +31,10 @@ ChartJS.register(
 const irStore = useIRStore()
 const { irArray, compArray, avgArray, irTotArray } = storeToRefs(irStore)
 
-// Labels automáticos por índice (reversados)
 const labels = computed(() =>
-  irArray.value.map((_, index) => `${index}`).slice().reverse()
+  [...Array(irArray.value.length).keys()] // [0, 1, 2, ..., 19]
 )
 
-// Datos para la gráfica directamente del store, con reverse
 const data = computed(() => ({
   labels: labels.value,
   datasets: [
@@ -78,6 +76,7 @@ const data = computed(() => ({
     }
   ]
 }))
+
 
 
 const options = {
