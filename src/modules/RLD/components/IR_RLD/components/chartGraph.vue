@@ -14,8 +14,9 @@ import {
   Legend,
   Title
 } from 'chart.js'
-import { ref, watch, computed } from 'vue'
+import { computed } from 'vue'
 import { useIRStore } from '../store/IRStore'
+import { storeToRefs } from 'pinia'
 
 ChartJS.register(
   LineElement,
@@ -27,101 +28,49 @@ ChartJS.register(
   Title
 )
 
-// Pinia store
 const irStore = useIRStore()
+const { irArray, compArray, avgArray, irTotArray } = storeToRefs(irStore)
 
-// Datos reactivos locales
-const irData = ref<number[]>([])
-const compData = ref<number[]>([])
-const avgData = ref<number[]>([])
-const irTotData = ref<number[]>([])
-const labels = ref<string[]>([])
-let time = 0
-
-// Lógica de actualización con debounce y comparación
-let lastValues = {
-  ir: null as number | null,
-  comp: null as number | null,
-  avg: null as number | null,
-  irTot: null as number | null
-}
-
-let timeout: ReturnType<typeof setTimeout> | null = null
-
-watch(
-  () => irStore.irArray,
-  () => {
-    if (timeout) clearTimeout(timeout)
-
-    timeout = setTimeout(() => {
-      const ir = irStore.irArray[0]
-      const comp = irStore.compArray[0]
-      const avg = irStore.avgArray[0]
-      const irTot = irStore.irTotArray[0]
-
-      if (
-        ir !== lastValues.ir ||
-        comp !== lastValues.comp ||
-        avg !== lastValues.avg ||
-        irTot !== lastValues.irTot
-      ) {
-        irData.value.push(ir)
-        compData.value.push(comp)
-        avgData.value.push(avg)
-        irTotData.value.push(irTot)
-        labels.value.push(`${time++}s`)
-
-        lastValues = { ir, comp, avg, irTot }
-
-        const MAX = 60
-        if (irData.value.length > MAX) {
-          irData.value.shift()
-          compData.value.shift()
-          avgData.value.shift()
-          irTotData.value.shift()
-          labels.value.shift()
-        }
-      }
-    }, 50)
-  },
-  { flush: 'post' }
+// Labels automáticos por índice
+const labels = computed(() =>
+  irArray.value.map((_, index) => `${index}`)
 )
 
-// Datos para la gráfica
+// Datos para la gráfica directamente del store
 const data = computed(() => ({
   labels: labels.value,
   datasets: [
     {
       label: 'IR',
-      data: irData.value,
+      data: irArray.value,
       borderColor: '#FFFFFF',
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       tension: 0.3
     },
     {
       label: 'COMP',
-      data: compData.value,
+      data: compArray.value,
       borderColor: '#F87171',
       backgroundColor: 'rgba(248, 113, 113, 0.1)',
       tension: 0.3
     },
     {
       label: 'Average',
-      data: avgData.value,
+      data: avgArray.value,
       borderColor: '#60A5FA',
       backgroundColor: 'rgba(96, 165, 250, 0.1)',
       tension: 0.3
     },
     {
       label: 'IR Total',
-      data: irTotData.value,
+      data: irTotArray.value,
       borderColor: '#34D399',
       backgroundColor: 'rgba(52, 211, 153, 0.1)',
       tension: 0.3
     },
     {
       label: 'Threshold',
-      data: Array(labels.value.length).fill(10), // puedes ajustar según lógica
+      data: Array(irArray.value.length).fill(10), // valor fijo
       borderColor: '#FBBF24',
       backgroundColor: 'rgba(251, 191, 36, 0.1)',
       borderDash: [5, 5],
@@ -130,7 +79,6 @@ const data = computed(() => ({
   ]
 }))
 
-// Opciones de la gráfica
 const options = {
   responsive: true,
   maintainAspectRatio: false,
@@ -148,7 +96,7 @@ const options = {
     x: {
       title: {
         display: true,
-        text: 'Time (s)',
+        text: 'Index',
         color: '#FFFFFF',
         font: {
           size: 16,

@@ -8,6 +8,7 @@
       <LED_Strobe_Timing />
     </div>
     <div>
+      <Graph />
     </div>
   </div>
 
@@ -19,6 +20,7 @@
 
 <script setup lang="ts">
 import { onMounted, watch } from 'vue';
+import Graph from './components/graph.vue';
 import IR from './components/IR.vue';
 import LED_Strobe_Timing from './components/LED_Strobe_Timing.vue';
 import LightLevels from './components/lightLevels.vue';
