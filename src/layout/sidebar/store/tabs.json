@@ -1,0 +1,13 @@
+{
+    "Inspection Setup": {
+        "OSW": {
+            "Image": {},
+            "Strobe Setup": {}
+            
+        },
+        "RLD": {
+            "IR": {},
+            "RLD": {}
+        }
+    }
+}
