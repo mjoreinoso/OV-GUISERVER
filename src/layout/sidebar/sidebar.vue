@@ -15,16 +15,7 @@
 
 
         <!-- Botón de menú -->
-        <div class="flex w-full p-3">
-            <div class="flex space-x-2 items-center overflow-hidden">
-                <img class="w-10" :src="inspectionSetup" alt="Inspection Setup Icon" />
-                <span
-                    class="font-semibold text-[1.2vw] transition-all duration-500 ease-in-out overflow-hidden whitespace-nowrap"
-                    :class="sidebarStore.isOpen ? 'opacity-100 w-fit' : 'ml-0 opacity-0 w-0'">
-                    Inspection Setup
-                </span>
-            </div>
-        </div>
+        <Tree :nodes="menuTree" :is-open-sidebar="sidebarStore.isOpen" @nodeClick="handleTabClick" />
     </div>
 </template>
 
@@ -33,7 +24,14 @@
 import FILTEC from '@/assets/manufacturer/FILTEC.png';
 import logoFILTEC from '@/assets/manufacturer/logoFILTEC.png';
 import { useSidebarStore } from './store/sidebarStore';
-import inspectionSetup from '@/assets/sidebarIcons/inspectionSetup.svg';
-
+import Tree from './components/tree.vue';
+import { menuTree } from './store/menuTree';
 const sidebarStore = useSidebarStore();
+
+function handleTabClick(name: string) {
+    console.log('Clicked tab:', name)
+    // Aquí puedes agregar navegación o lógica adicional
+}
+
+
 </script>

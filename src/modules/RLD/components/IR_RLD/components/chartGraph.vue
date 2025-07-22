@@ -40,35 +40,35 @@ const data = computed(() => ({
   datasets: [
     {
       label: 'IR',
-      data: irArray.value.slice().reverse(),
+      data: irArray.value,
       borderColor: '#FFFFFF',
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       tension: 0.3
     },
     {
       label: 'COMP',
-      data: compArray.value.slice().reverse(),
+      data: compArray.value,
       borderColor: '#F87171',
       backgroundColor: 'rgba(248, 113, 113, 0.1)',
       tension: 0.3
     },
     {
       label: 'Average',
-      data: avgArray.value.slice().reverse(),
+      data: avgArray.value,
       borderColor: '#60A5FA',
       backgroundColor: 'rgba(96, 165, 250, 0.1)',
       tension: 0.3
     },
     {
       label: 'IR Total',
-      data: irTotArray.value.slice().reverse(),
+      data: irTotArray.value,
       borderColor: '#34D399',
       backgroundColor: 'rgba(52, 211, 153, 0.1)',
       tension: 0.3
     },
     {
       label: 'Threshold',
-      data: Array(irArray.value.length).fill(10).reverse(),
+      data: Array(irArray.value.length).fill(10),
       borderColor: '#FBBF24',
       backgroundColor: 'rgba(251, 191, 36, 0.1)',
       borderDash: [5, 5],
@@ -111,6 +111,8 @@ const options = {
       }
     },
     y: {
+      min: 0,
+      max: 1023,
       title: {
         display: true,
         text: 'Value',
