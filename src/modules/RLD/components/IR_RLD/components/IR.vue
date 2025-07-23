@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-2 gap-2">
             <titleInputs title="Detection Threshold" placeholder="Enter threshold" :value="data.threshold"
-                @update:value="val => data.threshold = val" />
+                @update:value="val => data.threshold = val" :min="0" :max="1023" />
             <titleSelects title="Reject Type" :value="data.recject_type"
                 @update:value="val => data.recject_type = val" />
         </div>

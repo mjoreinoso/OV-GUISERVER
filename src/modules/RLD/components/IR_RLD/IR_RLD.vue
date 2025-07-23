@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full h-full justify-around space-y-3" v-if="irStore.irData.length">
+  <div class="flex flex-col w-full h-full justify-around space-y-3">
     <div class="flex flex-row space-x-3">
       <div class="flex flex-col self-stretch space-y-3">
         <IR />
@@ -10,11 +10,6 @@
     <div>
       <Graph />
     </div>
-  </div>
-
-  <!-- Loader / placeholder -->
-  <div v-else class="flex items-center justify-center h-full text-white text-xl">
-    Loading IR data...
   </div>
 </template>
 
