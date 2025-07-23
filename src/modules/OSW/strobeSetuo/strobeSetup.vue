@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import numberInput from '../../../assets/vueComponents/inputs/numberInput.vue';
 import camera from '../../../assets/vueComponents/camera/camera.vue';
 import ledStrobes from './components/ledStrobes.vue';
 

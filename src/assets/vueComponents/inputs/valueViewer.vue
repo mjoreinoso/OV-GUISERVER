@@ -12,8 +12,9 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-  value: number | string | null;
+  value?: number | string | null;
 }>();
+
 
 const displayValue = computed(() => {
   return typeof props.value === 'number' ? props.value.toFixed(2) : props.value ?? '';
