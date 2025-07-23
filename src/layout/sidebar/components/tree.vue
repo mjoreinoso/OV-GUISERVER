@@ -5,7 +5,7 @@
         class="cursor-pointer w-full p-2 rounded-xl font-semibold flex text-xl items-center space-x-2 transition-all duration-200"
         :style="{ paddingLeft: `${depth * 40 + 16}px` }" :class="{
           'hover:bg-secondary hover:bg-opacity-25': true
-        }" @click="toggleNode(key)">
+        }" @click="toggleNode(key, node)">
 
         <!-- Flecha si tiene hijos -->
 
@@ -28,8 +28,9 @@
 
       <!-- Subniveles -->
       <transition name="fade">
-        <Tree v-if="hasChildren(node.children) && expandedNodes[key] && isOpenSidebar" :nodes="(node.children ?? {}) as Record<string, TreeNode>"
-          :is-open-sidebar="isOpenSidebar" :depth="depth + 1" @nodeClick="emitClick" />
+        <Tree v-if="hasChildren(node.children) && expandedNodes[key] && isOpenSidebar"
+          :nodes="(node.children ?? {}) as Record<string, TreeNode>" :is-open-sidebar="isOpenSidebar" :depth="depth + 1"
+          @nodeClick="emitClick" />
       </transition>
     </li>
   </ul>
@@ -38,6 +39,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import arrowDown from '@/assets/sidebarIcons/arrowDown.svg'
+import { useSidebarStore } from '../store/sidebarStore'
+
+const sidebarStore = useSidebarStore()
 
 interface TreeNode {
   label?: string
@@ -61,10 +65,16 @@ const emit = defineEmits<{
 
 const expandedNodes = ref<Record<string, boolean>>({})
 
-function toggleNode(key: string) {
-  expandedNodes.value[key] = !expandedNodes.value[key]
+function toggleNode(key: string, node: TreeNode) {
+  if (!hasChildren(node.children)) {
+    sidebarStore.setScreen(key)
+  } else {
+    expandedNodes.value[key] = !expandedNodes.value[key]
+  }
+
   emitClick(key)
 }
+
 
 function emitClick(value: string) {
   emit('nodeClick', value)

@@ -6,14 +6,14 @@ export const menuTree = {
     icon: inspectionSetup,
     children: {
       osw: {
-        label: 'Outer Sidewall', // ahora puedes cambiarlo a lo que quieras
+        label: 'OSW - Outer Sidewall', 
         children: {
           image: { label: 'Image' },
           strobeSetup: { label: 'Strobe Setup' }
         }
       },
       rld: {
-        label: 'Residual Liquid Detection', // también editable
+        label: 'RLD - Residual Liquid Detection', 
         children: {
           ir: { label: 'IR' },
           rf: { label: 'RF' }

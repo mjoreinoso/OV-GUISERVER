@@ -41,28 +41,28 @@ const data = computed(() => ({
     {
       label: 'IR',
       data: irArray.value,
-      borderColor: '#FFFFFF',
+      borderColor: '#F87171',
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       tension: 0.3
     },
     {
       label: 'COMP',
       data: compArray.value,
-      borderColor: '#F87171',
+      borderColor: '#60A5FA',
       backgroundColor: 'rgba(248, 113, 113, 0.1)',
       tension: 0.3
     },
     {
       label: 'Average',
       data: avgArray.value,
-      borderColor: '#60A5FA',
+      borderColor: '#34D399',
       backgroundColor: 'rgba(96, 165, 250, 0.1)',
       tension: 0.3
     },
     {
       label: 'IR Total',
       data: irTotArray.value,
-      borderColor: '#34D399',
+      borderColor: '#FF00FF',
       backgroundColor: 'rgba(52, 211, 153, 0.1)',
       tension: 0.3
     },
