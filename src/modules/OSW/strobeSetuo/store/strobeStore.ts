@@ -12,7 +12,18 @@ export interface OSWStrobeData {
 
 export const useStrobeStore = defineStore("strobe", {
   state: () => ({
-    strobeData: [] as OSWStrobeData[],
+    strobeData: [
+      {
+        product_id: 0,
+        global_brightness: 1,
+        ...Object.fromEntries(
+          Array.from({ length: 16 }, (_, i) => [`pot_${i}`, 0])
+        ),
+        ...Object.fromEntries(
+          Array.from({ length: 16 }, (_, i) => [`state_${i}`, true])
+        ),
+      },
+    ] as OSWStrobeData[],
   }),
 
   actions: {

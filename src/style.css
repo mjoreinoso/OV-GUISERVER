@@ -35,3 +35,10 @@ select {
   --color-secondary: #14377B;
 
 }
+
+.scroll-left {
+  direction: rtl;
+}
+.scroll-left > * {
+  direction: ltr;
+}

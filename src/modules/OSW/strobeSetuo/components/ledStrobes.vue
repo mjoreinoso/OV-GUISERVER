@@ -1,5 +1,5 @@
 <template>
-    <div v-if="data" class="flex flex-col space-y-4 text-white border-2 rounded-xl p-3 text-[1.2vw]">
+    <div class="flex flex-col space-y-4 text-white border-2 rounded-xl p-3 text-[1.2vw]">
         <!-- Global Brightness -->
         <div class="flex items-center space-x-3 justify-between border-b-2 pb-2 text-[1.4vw]">
             <label for="global_brightness">Global Brightness:</label>
@@ -9,10 +9,10 @@
         </div>
 
         <!-- POTs + States -->
-        <div class="w-full max-h-[77.5vh] overflow-y-auto pr-2">
+        <div class="w-full max-h-[77.5vh] overflow-y-auto scroll-left">
             <div class="flex flex-col gap-3">
-                <div v-for="i in 16" :key="i"
-                    class="flex items-center justify-between px-2 py-1 border-b border-white/20">
+                <div v-for="i in Array.from({ length: 16 }, (_, i) => i)" :key="i"
+                    class="flex items-center justify-between pl-3 py-1 border-b border-white/20">
                     <label class="min-w-[80px] text-left">POT {{ i }}</label>
 
                     <div class="flex items-center space-x-4">
@@ -20,14 +20,13 @@
                             @update-state="(name, newVal) => updateLEDState(name, newVal)" />
 
                         <numberInput :name="`pot_${i}`" v-model="data[`pot_${i}`]" :min="0" :max="255"
-                            :disabled="!data[`state_${i}`]" @update:modelValue="(val) => updatePotValue(i, val)" />
+                            :disabled="!data[`state_${i}`]" :disableAutoEmit="true"
+                            @update:modelValue="(val) => updatePotValue(i, val)" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div v-else class="text-white">Loading strobe data...</div>
 </template>
 
 <script setup lang="ts">
@@ -39,6 +38,7 @@ import LED from "../../../../assets/vueComponents/inputs/led.vue";
 const strobeStore = useStrobeStore();
 const data = computed(() => strobeStore.strobeData[0]);
 const lastKnownPotValues = ref<{ [key: string]: number }>({});
+const isBatchUpdating = ref(false);
 
 onMounted(async () => {
     await strobeStore.fetchStrobeData();
@@ -66,11 +66,20 @@ const globalBrightnessLocked = computed(() => {
     return false;
 });
 
+import { nextTick } from "vue";
 
-function updateGlobalBrightness(newVal: number) {
+async function updateGlobalBrightness(newVal: number) {
     if (!(data.value as any)) return;
 
+    isBatchUpdating.value = true;
+
     (data.value as any).global_brightness = newVal;
+
+    if (newVal === 1) {
+        isBatchUpdating.value = false;
+        emitChange();
+        return;
+    }
 
     for (let i = 0; i < 16; i++) {
         const potKey = `pot_${i}`;
@@ -83,36 +92,36 @@ function updateGlobalBrightness(newVal: number) {
         }
     }
 
+    await nextTick(); // asegurar que se actualicen valores antes de desbloquear
+    isBatchUpdating.value = false;
+
     emitChange();
 }
 
 function updatePotValue(index: number, newVal: number) {
     if (!(data.value as any)) return;
 
+    if (isBatchUpdating.value) return; // 🔒 cancela si viene desde globalBrightness
+
     const potKey = `pot_${index}`;
     (data.value as any)[potKey] = newVal;
 
-    // Se rompe la relación → reset de brillo
+    // Romper la relación
     (data.value as any).global_brightness = 1;
 
-    // Guardamos nuevo valor base
-    lastKnownPotValues.value[potKey] = newVal;
+    for (let i = 0; i < 16; i++) {
+        const key = `pot_${i}`;
+        lastKnownPotValues.value[key] = (data.value as any)[key];
+    }
 
     emitChange();
 }
 
 function updateLEDState(name: string, newVal: boolean) {
-    if (data.value as any) {
-        (data.value as any as any)[name] = newVal;
+    if (!(data.value as any)) return;
 
-        // Extra: si apagamos el LED, reiniciar pot asociado
-        const index = Number(name.split("_")[1]);
-        const potKey = `pot_${index}`;
-        if (!newVal) {
-            (data.value as any as any)[potKey] = 0;
-        }
+    (data.value as any)[name] = newVal;
 
-        emitChange();
-    }
+    if (!isBatchUpdating.value) emitChange();
 }
 </script>
