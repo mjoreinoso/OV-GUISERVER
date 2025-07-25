@@ -1,0 +1,38 @@
+// stores/strobeStore.ts
+import { defineStore } from "pinia";
+import axios from "axios";
+import { socket } from "../../../../client/socket";
+
+export interface OSWStrobeData {
+  product_id: number;
+  global_brightness: number;
+  [key: `pot_${number}`]: number;
+  [key: `state_${number}`]: boolean;
+}
+
+export const useStrobeStore = defineStore("strobe", {
+  state: () => ({
+    strobeData: [] as OSWStrobeData[],
+  }),
+
+  actions: {
+    async fetchStrobeData() {
+      try {
+        const response = await axios.get(
+          import.meta.env.VITE_SERVER_DOMAIN + "/inspection/osw/strobe"
+        );
+        this.strobeData = response.data;
+        console.log("✅ OSW Strobe data:", this.strobeData);
+      } catch (error) {
+        console.error("❌ Error fetching strobe data:", error);
+      }
+    },
+
+    emitStrobeData() {
+      if (socket.connected && this.strobeData.length > 0) {
+        socket.emit("OSWStrobeData", this.strobeData);
+        console.log("📤 OSWStrobeData emitted:", this.strobeData);
+      }
+    },
+  },
+});

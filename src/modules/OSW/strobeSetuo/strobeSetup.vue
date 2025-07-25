@@ -8,5 +8,13 @@
 <script setup lang="ts">
 import camera from '../../../assets/vueComponents/camera/camera.vue';
 import ledStrobes from './components/ledStrobes.vue';
+import { useStrobeStore } from './store/strobeStore';
+import { onMounted } from 'vue';
 
+const strobeStore = useStrobeStore();
+
+onMounted(async () => {
+  await strobeStore.fetchStrobeData();
+  
+});
 </script>
