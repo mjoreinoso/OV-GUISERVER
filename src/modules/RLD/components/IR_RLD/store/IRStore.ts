@@ -28,6 +28,13 @@ export const useIRStore = defineStore("irStore", {
         avgArray: [] as number[],
     }),
 
+    getters: {
+        // Getter para obtener el threshold del primer elemento de irData
+        currentThreshold: (state): number => {
+            return state.irData[0]?.threshold || 0;
+        }
+    },
+
     actions: {
         async fetchIRData() {
             this.isLoading = true;

@@ -6,9 +6,14 @@
         v-model="inputValue"
         :placeholder="placeholder"
         :name="title"
-        :disabled="false"
+        :disabled="disabled"
         :min="min"
         :max="max"
+        :step="step"
+        :precision="precision"
+        :readonlyButtonsOnly="readonlyButtonsOnly"
+        :readonlyIncrementLock="readonlyIncrementLock"
+        :confirmOnEnter="confirmOnEnter"
       />
     </div>
   </div>
@@ -24,6 +29,12 @@ const props = defineProps<{
   value: number;
   min?: number;
   max?: number;
+  step?: number;
+  precision?: number;
+  disabled?: boolean;
+  readonlyButtonsOnly?: boolean;
+  readonlyIncrementLock?: boolean;
+  confirmOnEnter?: boolean;
 }>();
 
 const emit = defineEmits<{

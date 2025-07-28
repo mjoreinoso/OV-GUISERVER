@@ -68,7 +68,7 @@ const data = computed(() => ({
     },
     {
       label: 'Threshold',
-      data: Array(irArray.value.length).fill(10),
+      data: Array(labels.value.length).fill(irStore.currentThreshold),
       borderColor: '#FBBF24',
       backgroundColor: 'rgba(251, 191, 36, 0.1)',
       borderDash: [5, 5],
