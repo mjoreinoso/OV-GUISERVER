@@ -87,7 +87,6 @@ const emit = defineEmits<{
 
 const displayValue = ref(props.modelValue.toString());
 const allowedKeys = [
-    "0",
     "1",
     "2",
     "3",
@@ -96,8 +95,9 @@ const allowedKeys = [
     "6",
     "7",
     "8",
-    "-",
     "9",
+    "-",
+    "0",
     ".",
 ];
 const keys = allowedKeys;
