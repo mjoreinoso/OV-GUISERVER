@@ -30,6 +30,7 @@ select {
   padding: 2em;
 }
 
+
 @theme {
   --color-primary: #2E2C2B;
   --color-secondary: #14377B;
@@ -42,3 +43,21 @@ select {
 .scroll-left > * {
   direction: ltr;
 }
+
+/* Aumentar el ancho, padding y tamaño del texto del toast */
+.custom-toast {
+  font-size: 1.3rem;              /* Texto más grande */
+  padding: 3rem 3rem;           /* Más espacio interior */
+  min-width: 400px;               /* Más ancho */
+  min-height: 80px;               /* Más alto */
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Aumentar el tamaño del icono */
+.custom-toast .vue3-toastify__toast-icon {
+  font-size: 2rem !important;     /* Ícono más grande */
+  margin-right: 1rem;
+}
+
