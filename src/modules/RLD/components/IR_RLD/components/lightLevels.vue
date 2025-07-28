@@ -4,7 +4,9 @@ import { useIRStore } from '../store/IRStore';
 import { storeToRefs } from 'pinia';
 
 const irStore = useIRStore();
-const { compArray, irArray, irTotArray, avgArray } = storeToRefs(irStore);
+const { compArray, irArray, irTotArray, avgArray, lastRjtd, result } = storeToRefs(irStore);
+
+
 </script>
 
 <template>
@@ -29,11 +31,11 @@ const { compArray, irArray, irTotArray, avgArray } = storeToRefs(irStore);
     <div class="flex justify-center">
       <valueViewer :value="avgArray[0] ?? null" />
     </div>
+    <valueViewer :value="irTotArray[0] ?? null"
+      :highlight="result[0] === 1 ? 'danger' : result[0] === 0 ? 'none' : 'default'" />
+
     <div class="flex justify-center">
-      <valueViewer :value="irTotArray[0] ?? null" />
-    </div>
-    <div class="flex justify-center">
-      <valueViewer :value="irTotArray[0] ?? null" />
+      <valueViewer :value="lastRjtd[0] ?? null" />
     </div>
   </div>
 </template>
