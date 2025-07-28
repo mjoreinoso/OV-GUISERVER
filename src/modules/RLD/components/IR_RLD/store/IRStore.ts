@@ -26,6 +26,8 @@ export const useIRStore = defineStore("irStore", {
         irArray: [] as number[],
         irTotArray: [] as number[],
         avgArray: [] as number[],
+        result: [] as number[],
+        lastRjtd: [] as number[],
     }),
 
     getters: {
@@ -55,11 +57,15 @@ export const useIRStore = defineStore("irStore", {
             ir: number[];
             irTot: number[];
             average: number[];
+            result: number[];
+            lastRjtd: number[];
         }) {
             this.compArray = payload.comp;
             this.irArray = payload.ir;
             this.irTotArray = payload.irTot;
             this.avgArray = payload.average;
+            this.result = payload.result;
+            this.lastRjtd = payload.lastRjtd;
         }
 
     },
