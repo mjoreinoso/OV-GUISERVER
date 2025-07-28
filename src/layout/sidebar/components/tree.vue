@@ -8,10 +8,10 @@
           'bg-secondary bg-opacity-25 text-white':
             isCurrent(key) ||
             shouldHighlightCollapsedParent(key, node) ||
-            isParentOfCurrent(key, node)
+            isParentOfCurrent(node)
         }" @click="toggleNode(key, node)">
         <!-- Línea vertical azul a la izquierda del ítem activo -->
-        <span v-if="isCurrent(key) || shouldHighlightCollapsedParent(key, node) || isParentOfCurrent(key, node)"
+        <span v-if="isCurrent(key) || shouldHighlightCollapsedParent(key, node) || isParentOfCurrent(node)"
           class="absolute left-0 top-0 h-full w-[8px] bg-[#5095BF] rounded-l-lg" />
 
         <!-- Ícono principal -->
@@ -160,14 +160,14 @@ function shouldHighlightCollapsedParent(key: string, node: TreeNode): boolean {
 }
 
 
-function isParentOfCurrent(key: string, node: TreeNode): boolean {
+function isParentOfCurrent(node: TreeNode): boolean {
   const children = node.children
 
   if (!props.isOpenSidebar && children && hasChildren(children)) {
     return Object.entries(children).some(
       ([childKey, childNode]) =>
         childKey === sidebarStore.currentScreen ||
-        isParentOfCurrent(childKey, childNode as TreeNode)
+        isParentOfCurrent(childNode as TreeNode)
     )
   }
   return false
