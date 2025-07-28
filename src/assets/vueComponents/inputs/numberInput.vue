@@ -16,7 +16,7 @@
         'cursor-default': readonlyButtonsOnly,
         'border-yellow-400 bg-yellow-200 shadow-xs shadow-yellow-400': confirmOnEnter && hasPendingChange,
         'border-transparent': !confirmOnEnter || !hasPendingChange
-      }" :value="internalValue" @focus="openNumpad" :disabled="disabled" />
+      }" :value="formattedValue" @focus="openNumpad" :disabled="disabled" />
 
 
     <!-- Botón de incremento -->
@@ -24,8 +24,8 @@
       :class="{
         'opacity-50 cursor-not-allowed': props.disabled || props.readonlyIncrementLock,
         'cursor-pointer': !props.disabled && !props.readonlyIncrementLock
-      }" @mousedown="startIncrement" @mouseup="stopAction" @mouseleave="stopAction" @touchstart.prevent="startIncrement"
-      @touchend="stopAction">
+      }" @mousedown="startIncrement" @mouseup="stopAction" @mouseleave="stopAction"
+      @touchstart.prevent="startIncrement" @touchend="stopAction">
       <span>+</span>
     </div>
 
@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import numpad from '../numpad.vue'
 
 type NumOrUndefined = number | undefined
@@ -48,10 +48,13 @@ const props = defineProps({
   name: { type: String, default: '' },
   disabled: { type: Boolean, default: false },
   confirmOnEnter: { type: Boolean, default: false },
-  readonlyButtonsOnly: { type: Boolean, default: false }, // ✅ nueva prop
+  readonlyButtonsOnly: { type: Boolean, default: false },
   readonlyIncrementLock: { type: Boolean, default: false },
 
+  step: { type: Number, default: 1 },           // 🔢 define el paso (1 por defecto)
+  precision: { type: Number, default: 0 },      // ✨ cuántos decimales mostrar (0 = entero)
 })
+
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -82,6 +85,10 @@ function openNumpad() {
   }
 }
 
+const formattedValue = computed(() => {
+  return internalValue.value.toFixed(props.precision);
+});
+
 
 // Increment/Decrement
 let currentTimeout: number | null = null
@@ -106,14 +113,17 @@ function stopAction() {
 }
 function increment() {
   if (props.disabled || props.readonlyIncrementLock) return;
-  internalValue.value = clamp(internalValue.value + 1);
+  internalValue.value = clamp(Number((internalValue.value + props.step).toFixed(props.precision)));
 }
 
 function decrement() {
-  if (props.disabled) return
-  internalValue.value = clamp(internalValue.value - 1)
+  if (props.disabled) return;
+  internalValue.value = clamp(Number((internalValue.value - props.step).toFixed(props.precision)));
 }
+
 
 const startIncrement = () => startAction(increment)
 const startDecrement = () => startAction(decrement)
+
+
 </script>

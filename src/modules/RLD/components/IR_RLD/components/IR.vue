@@ -2,9 +2,10 @@
     <div class="flex flex-col p-2 border-2 rounded-xl">
         <div class="grid grid-cols-2 gap-2">
             <titleInputs title="Brightness" placeholder="Enter brightness value" :value="data.brightness"
-                @update:value="val => data.brightness = val" :min="0" :max="4" />
+                @update:value="val => data.brightness = val" :min="0" :max="4" :step="0.1" :precision="1" 
+                :readonlyIncrementLock="isAnyIrPotAtMax" />
             <titleInputs title="Sensitivity" placeholder="Enter sensitivity value" :value="data.sensitivity"
-                @update:value="val => data.sensitivity = val" :min="0" :max="4" />
+                @update:value="val => data.sensitivity = val" :min="0" :max="4" :step="0.1" :precision="1" />
         </div>
         <div class="grid grid-cols-2 gap-2">
             <titleInputs title="Detection Threshold" placeholder="Enter threshold" :value="data.threshold"
@@ -23,4 +24,12 @@ import { useIRStore } from '../store/IRStore';
 
 const irStore = useIRStore();
 const data = computed(() => irStore.irData[0] || {});
+
+// Computed para verificar si algún ir_pot está en su valor máximo
+const isAnyIrPotAtMax = computed(() => {
+    return data.value.ir_pot_0 * data.value.brightness >= 100 || 
+           data.value.ir_pot_1 * data.value.brightness >= 100 || 
+           data.value.ir_pot_2 * data.value.brightness >= 100 || 
+           data.value.ir_pot_3 * data.value.brightness >= 100;
+});
 </script>
