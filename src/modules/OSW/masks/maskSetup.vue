@@ -29,8 +29,9 @@ const socketStore = useSocketStore();
 
 const imageSrc = ref('');
 let ws: WebSocket | null = null;
+let lastObjectUrl: string | null = null;
 
-// Suscripción a cambios del store
+// Detectar cambios en el store
 maskStore.$subscribe((mutation) => {
   console.log('Cambio detectado en maskStore:', {
     type: mutation.type,
@@ -46,24 +47,27 @@ maskStore.$subscribe((mutation) => {
 onMounted(() => {
   maskStore.fetchMaskConfig();
 
-  // Conectar al WebSocket del HMI o fuente de imagen
-  ws = new WebSocket('ws://localhost:9090'); // <- reemplaza con tu URL real
+  ws = new WebSocket('ws://localhost:9090'); // <-- cambia esto según la ruta real
+  ws.binaryType = 'blob'; // o "arraybuffer" si no te funciona con "blob"
 
   ws.onopen = () => {
-    console.log('Conectado al WebSocket para imagen en tiempo real');
+    console.log('WebSocket conectado');
   };
 
   ws.onmessage = (event) => {
-    // Suponemos que recibimos directamente un string con base64
-    if (typeof event.data === 'string' && event.data.startsWith('data:image')) {
-      imageSrc.value = event.data;
-    } else {
-      console.warn('Dato inesperado del socket:', event.data);
+    // Limpiar la URL anterior para evitar fugas de memoria
+    if (lastObjectUrl) {
+      URL.revokeObjectURL(lastObjectUrl);
     }
+
+    const blob = new Blob([event.data], { type: 'image/jpeg' });
+    const objectUrl = URL.createObjectURL(blob);
+    lastObjectUrl = objectUrl;
+    imageSrc.value = objectUrl;
   };
 
   ws.onerror = (err) => {
-    console.error('Error en WebSocket:', err);
+    console.error('Error WebSocket:', err);
   };
 
   ws.onclose = () => {
@@ -75,6 +79,11 @@ onUnmounted(() => {
   if (ws) {
     ws.close();
     ws = null;
+  }
+
+  if (lastObjectUrl) {
+    URL.revokeObjectURL(lastObjectUrl);
+    lastObjectUrl = null;
   }
 });
 </script>
