@@ -9,6 +9,7 @@ export const menuTree = {
         label: 'OSW - Outer Sidewall', 
         children: {
           image: { label: 'Image' },
+          masks: { label: 'Masks' },
           strobeSetup: { label: 'Strobe Setup' }
         }
       },
