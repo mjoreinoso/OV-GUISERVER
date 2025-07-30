@@ -12,23 +12,22 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
-import topDiagonalMask from './components/topDiagonalMask.vue';
-import bottomDiagonalMask from './components/bottomDiagonalMask.vue';
-import spotMasking from './components/spotMasking.vue';
-import { useMaskStore } from './store/maskStore';
-import { useSocketStore } from '../../../client/socketStore';
+import { onMounted, onUnmounted, ref } from "vue";
+import topDiagonalMask from "./components/topDiagonalMask.vue";
+import bottomDiagonalMask from "./components/bottomDiagonalMask.vue";
+import spotMasking from "./components/spotMasking.vue";
+import { useMaskStore } from "./store/maskStore";
+import { useSocketStore } from "../../../client/socketStore";
 
 const maskStore = useMaskStore();
 const socketStore = useSocketStore();
 
-const imageSrc = ref('');
+const imageSrc = ref("");
 let ws: WebSocket | null = null;
-let lastObjectUrl: string | null = null;
 
 // Detectar cambios en el store
 maskStore.$subscribe((mutation) => {
-    console.log('Cambio detectado en maskStore:', {
+    console.log("Cambio detectado en maskStore:", {
         type: mutation.type,
         storeId: mutation.storeId,
         events: mutation.events,
@@ -36,58 +35,46 @@ maskStore.$subscribe((mutation) => {
 
     const payload = maskStore.getMaskDataPayload();
     socketStore.maskDataEmit(payload);
-    console.log('Datos de máscara enviados por socket:', payload);
+    console.log("Datos de máscara enviados por socket:", payload);
 });
 
 onMounted(() => {
     maskStore.fetchMaskConfig();
 
-    ws = new WebSocket('ws://localhost:9090'); // <-- cambia esto según la ruta real
-    ws.binaryType = 'blob'; // o "arraybuffer" si no te funciona con "blob"
+    ws = new WebSocket("ws://localhost:9090"); // <-- cambia esto según la ruta real
+    ws.binaryType = "blob"; // o "arraybuffer" si no te funciona con "blob"
 
     ws.onopen = () => {
-        console.log('WebSocket conectado');
+        console.log("WebSocket conectado");
     };
 
     ws.onmessage = (event) => {
-        console.log('📨 Mensaje recibido del WebSocket:', event.data);
+        console.log("📨 Recibido Blob. Convirtiendo a DataURL...");
 
-        console.log('🔍 Tipo de datos:', typeof event.data);
-        console.log('🔍 ¿Es instancia de Blob?:', event.data instanceof Blob);
-        console.log('🔍 ¿Es instancia de ArrayBuffer?:', event.data instanceof ArrayBuffer);
-        console.log('📦 Contenido bruto:', event.data);
-
-        // Limpiar la URL anterior para evitar leaks
-        if (lastObjectUrl) {
-            URL.revokeObjectURL(lastObjectUrl);
-        }
-
-        const blob = new Blob([event.data], { type: 'image/jpeg' }); // intenta también 'image/png' si ves que no carga
-        const objectUrl = URL.createObjectURL(blob);
-        lastObjectUrl = objectUrl;
-        imageSrc.value = objectUrl;
+        const reader = new FileReader();
+        reader.onload = () => {
+            imageSrc.value = reader.result as string;
+        };
+        reader.readAsDataURL(event.data);
     };
 
-
-
     ws.onerror = (err) => {
-        console.error('Error WebSocket:', err);
+        console.error("Error WebSocket:", err);
     };
 
     ws.onclose = () => {
-        console.log('WebSocket cerrado');
+        console.warn('WebSocket cerrado. Intentando reconectar en 2 segundos...');
+        setTimeout(() => {
+            location.reload(); // o reconectar de forma más elegante
+        }, 2000);
     };
+
 });
 
 onUnmounted(() => {
     if (ws) {
         ws.close();
         ws = null;
-    }
-
-    if (lastObjectUrl) {
-        URL.revokeObjectURL(lastObjectUrl);
-        lastObjectUrl = null;
     }
 });
 </script>
