@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import topDiagonalMask from "./components/topDiagonalMask.vue";
 import bottomDiagonalMask from "./components/bottomDiagonalMask.vue";
 import spotMasking from "./components/spotMasking.vue";
@@ -23,7 +23,6 @@ const maskStore = useMaskStore();
 const socketStore = useSocketStore();
 
 const imageSrc = ref("");
-let ws: WebSocket | null = null;
 
 // Detectar cambios en el store
 maskStore.$subscribe((mutation) => {
@@ -40,41 +39,7 @@ maskStore.$subscribe((mutation) => {
 
 onMounted(() => {
     maskStore.fetchMaskConfig();
-
-    ws = new WebSocket("ws://localhost:9090"); // <-- cambia esto según la ruta real
-    ws.binaryType = "blob"; // o "arraybuffer" si no te funciona con "blob"
-
-    ws.onopen = () => {
-        console.log("WebSocket conectado");
-    };
-
-    ws.onmessage = (event) => {
-        console.log("📨 Recibido Blob. Convirtiendo a DataURL...");
-
-        const reader = new FileReader();
-        reader.onload = () => {
-            imageSrc.value = reader.result as string;
-        };
-        reader.readAsDataURL(event.data);
-    };
-
-    ws.onerror = (err) => {
-        console.error("Error WebSocket:", err);
-    };
-
-    ws.onclose = () => {
-        console.warn('WebSocket cerrado. Intentando reconectar en 2 segundos...');
-        setTimeout(() => {
-            location.reload(); // o reconectar de forma más elegante
-        }, 2000);
-    };
-
 });
 
-onUnmounted(() => {
-    if (ws) {
-        ws.close();
-        ws = null;
-    }
-});
+
 </script>
