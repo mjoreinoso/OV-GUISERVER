@@ -48,5 +48,13 @@ export const useSocketStore = defineStore("socketStore", {
         console.error("❌ Cannot emit, socket not connected");
       }
     },
+
+    maskDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("OSWMaskData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
+    }
   },
 });
