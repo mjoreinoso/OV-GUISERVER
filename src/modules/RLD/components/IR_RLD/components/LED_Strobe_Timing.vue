@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center text-[1.2vw] border-2 p-3 rounded-xl space-y-4">
+  <div class="flex flex-col justify-center text-[1.1vw] border-2 p-3 rounded-xl space-y-4">
     <!-- Encabezado -->
     <div class="grid gap-x-3 font-bold"
          style="grid-template-columns: minmax(5vw, 8vw) repeat(2, minmax(0, 25vw));">

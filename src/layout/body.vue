@@ -13,11 +13,13 @@ import type { Component } from 'vue'
 import IR_RLD from '@/modules/RLD/components/IR_RLD/IR_RLD.vue'
 import StrobeSetup from '../modules/OSW/strobeSetuo/strobeSetup.vue'
 import maskSetup from '../modules/OSW/masks/maskSetup.vue'
+import imageSetup from '../modules/OSW/image/imageSetup.vue'
 
 const sidebarStore = useSidebarStore()
 
 const screenMap: Record<string, Component> = {
   ir: IR_RLD,
+  image: imageSetup,
   strobeSetup: StrobeSetup,
   masks: maskSetup
 }

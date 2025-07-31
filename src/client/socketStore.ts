@@ -55,6 +55,14 @@ export const useSocketStore = defineStore("socketStore", {
       } else {
         console.error("❌ Cannot emit, socket not connected");
       }
+    },
+
+    imageDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("OSWImageData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
     }
   },
 });

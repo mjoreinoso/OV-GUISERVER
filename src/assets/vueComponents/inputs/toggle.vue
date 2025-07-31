@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[10vw] flex justify-center">
+    <div>
         <div @click="toggle" role="switch" :aria-checked="isActive"
             class="relative flex items-center h-12 w-24 rounded-xl cursor-pointer select-none transition-colors duration-300 ease-in-out shadow-md"
             :class="isActive ? 'bg-green-600' : 'bg-red-600'">

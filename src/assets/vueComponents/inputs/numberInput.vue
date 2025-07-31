@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row text-[1.8vw] h-[6vh]">
+  <div class="flex flex-row text-[1.8vw] h-[5.5vh]">
     <!-- Botón de decremento -->
     <div
       class="bg-secondary  w-[2.5vw] rounded-l-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
@@ -10,7 +10,7 @@
 
     <!-- Input que abre el numpad -->
     <input readonly
-      class="bg-white w-[5vw] text-black text-center outline-none text-[1.8vw] border-2 transition-all duration-200"
+      class="bg-white w-[3.9vw] text-black text-center outline-none text-[1.2vw] border-2 transition-all duration-200"
       :class="{
         'cursor-not-allowed opacity-50': disabled,
         'cursor-default': readonlyButtonsOnly,
