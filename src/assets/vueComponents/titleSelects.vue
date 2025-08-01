@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row grow justify-between items-center p-2 space-x-3">
-    <div class="text-[1.2vw]">{{ props.title }}</div>
+    <div class="text-[1.1vw]">{{ props.title }}</div>
     <select
       class="bg-white h-[5vh] grow rounded-lg px-2 text-black"
       :value="props.value"

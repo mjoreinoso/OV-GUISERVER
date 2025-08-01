@@ -35,6 +35,7 @@ select {
 @theme {
   --color-primary: #2E2C2B;
   --color-secondary: #14377B;
+  --color-accent: #171315;
 
 }
 
