@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import numberInput from '../../../../assets/vueComponents/inputs/numberInput.vue';
-import Toggle from '../../../../assets/vueComponents/inputs/toggle.vue';
 import { useImageStore } from '../store/imageStore';
 
 const imageStore = useImageStore();
