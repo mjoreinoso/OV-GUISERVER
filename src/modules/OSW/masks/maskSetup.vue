@@ -58,27 +58,16 @@ onMounted(() => {
     console.log("🔹 Tamaño del blob:", blob.size, "bytes");
     console.log("🔹 Tipo MIME:", blob.type || "(vacío)");
 
-    // Inspeccionar primeros bytes del blob (opcional)
-    const readerRaw = new FileReader();
-    readerRaw.onload = () => {
-      const arr = new Uint8Array(readerRaw.result as ArrayBuffer);
-      const headerBytes = Array.from(arr.slice(0, 8))
-        .map((b) => b.toString(16).padStart(2, "0"))
-        .join(" ");
-      console.log("🔍 Cabecera HEX:", headerBytes);
-    };
-    readerRaw.readAsArrayBuffer(blob);
-
-    // Convertir a base64 y mostrar
     const reader = new FileReader();
     reader.onload = () => {
-      imageSrc.value = reader.result as string;
+      imageSrc.value = reader.result as string; // string tipo data:image/jpeg;base64,...
       console.log("✅ Imagen renderizada correctamente");
     };
-    reader.readAsDataURL(blob);
+    reader.readAsText(blob); // <- cambia esto
 
     console.groupEnd();
   };
+
 
 
   ws.onerror = (err) => {
