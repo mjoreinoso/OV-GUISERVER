@@ -49,26 +49,19 @@ onMounted(() => {
   };
 
   ws.onmessage = (event) => {
-    const blob = event.data;
+    const blob = event.data as Blob;
 
-    console.groupCollapsed("📨 Imagen recibida del WebSocket");
+    // Limpieza de URL anterior
+    if (imageSrc.value.startsWith("blob:")) {
+      URL.revokeObjectURL(imageSrc.value);
+    }
 
-    console.log("🔹 Tipo de dato:", typeof blob);
-    console.log("🔹 Instancia de Blob:", blob instanceof Blob);
-    console.log("🔹 Tamaño del blob:", blob.size, "bytes");
-    console.log("🔹 Tipo MIME:", blob.type || "(vacío)");
+    // Crear nueva URL segura
+    const url = URL.createObjectURL(blob);
+    imageSrc.value = url;
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      imageSrc.value = reader.result as string; // string tipo data:image/jpeg;base64,...
-      console.log("✅ Imagen renderizada correctamente");
-    };
-    reader.readAsText(blob); // <- cambia esto
-
-    console.groupEnd();
+    console.log("✅ Imagen renderizada correctamente (via blob URL)");
   };
-
-
 
   ws.onerror = (err) => {
     console.error("Error WebSocket:", err);
