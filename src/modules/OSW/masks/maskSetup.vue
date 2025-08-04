@@ -49,19 +49,19 @@ onMounted(() => {
   };
 
   ws.onmessage = (event) => {
-    const blob = event.data as Blob;
-
-    // Limpieza de URL anterior
-    if (imageSrc.value.startsWith("blob:")) {
-      URL.revokeObjectURL(imageSrc.value);
+    if (typeof event.data === 'string') {
+      imageSrc.value = `data:image/jpeg;base64,${event.data}`;
+      console.log("✅ Imagen desde base64 string");
+    } else {
+      const reader = new FileReader();
+      reader.onload = () => {
+        imageSrc.value = reader.result as string;
+        console.log("✅ Imagen desde Blob");
+      };
+      reader.readAsDataURL(event.data);
     }
-
-    // Crear nueva URL segura
-    const url = URL.createObjectURL(blob);
-    imageSrc.value = url;
-
-    console.log("✅ Imagen renderizada correctamente (via blob URL)");
   };
+
 
   ws.onerror = (err) => {
     console.error("Error WebSocket:", err);
