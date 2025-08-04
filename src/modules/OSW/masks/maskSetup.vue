@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-row h-full w-full">
-    <div class="flex flex-col justify-between h-full w-[35vw]">
+    <div class="flex flex-col justify-between h-full w-[35%]">
       <topDiagonalMask />
       <bottomDiagonalMask />
       <spotMasking />
     </div>
-    <div class="w-[65vw] h-full flex items-center justify-center">
+    <div class="w-[65%] h-full flex items-center justify-center">
       <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-h-full max-w-full" />
     </div>
   </div>
@@ -49,14 +49,37 @@ onMounted(() => {
   };
 
   ws.onmessage = (event) => {
-    console.log("📨 Recibido Blob. Convirtiendo a DataURL...");
+    const blob = event.data;
 
+    console.groupCollapsed("📨 Imagen recibida del WebSocket");
+
+    console.log("🔹 Tipo de dato:", typeof blob);
+    console.log("🔹 Instancia de Blob:", blob instanceof Blob);
+    console.log("🔹 Tamaño del blob:", blob.size, "bytes");
+    console.log("🔹 Tipo MIME:", blob.type || "(vacío)");
+
+    // Inspeccionar primeros bytes del blob (opcional)
+    const readerRaw = new FileReader();
+    readerRaw.onload = () => {
+      const arr = new Uint8Array(readerRaw.result as ArrayBuffer);
+      const headerBytes = Array.from(arr.slice(0, 8))
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join(" ");
+      console.log("🔍 Cabecera HEX:", headerBytes);
+    };
+    readerRaw.readAsArrayBuffer(blob);
+
+    // Convertir a base64 y mostrar
     const reader = new FileReader();
     reader.onload = () => {
       imageSrc.value = reader.result as string;
+      console.log("✅ Imagen renderizada correctamente");
     };
-    reader.readAsDataURL(event.data);
+    reader.readAsDataURL(blob);
+
+    console.groupEnd();
   };
+
 
   ws.onerror = (err) => {
     console.error("Error WebSocket:", err);
