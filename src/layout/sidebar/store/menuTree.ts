@@ -10,6 +10,7 @@ export const menuTree = {
         children: {
           image: { label: 'Image' },
           masks: { label: 'Masks' },
+          algorithm: { label: 'Algorithm' },
           strobeSetup: { label: 'Strobe Setup' }
         }
       },

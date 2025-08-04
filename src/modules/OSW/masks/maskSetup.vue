@@ -1,29 +1,32 @@
 <template>
-  <div class="flex flex-row h-full w-full">
-    <div class="flex flex-col justify-between h-full w-[35%]">
+  <div class="flex flex-row h-full w-full justify-between space-x-3">
+    <div class="flex flex-col justify-between h-full w-[30%]">
       <topDiagonalMask />
       <bottomDiagonalMask />
       <spotMasking />
     </div>
-    <div class="w-[65%] h-full flex items-center justify-center">
-      <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-h-full max-w-full" />
+    <div class="w-[65%] h-full flex-col flex items-end space-y-3">
+      <div class="flex items-center space-x-3">
+        <div class="font-semibold text-[1.1vw]">Mask Region Outline Display</div>
+        <toggle v-model="maskStore.mask_display" />
+      </div>
+      <liveFeed />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted } from "vue";
 import topDiagonalMask from "./components/topDiagonalMask.vue";
 import bottomDiagonalMask from "./components/bottomDiagonalMask.vue";
 import spotMasking from "./components/spotMasking.vue";
 import { useMaskStore } from "./store/maskStore";
 import { useSocketStore } from "../../../client/socketStore";
+import liveFeed from "./components/camera/liveFeed.vue";
+import toggle from "../../../assets/vueComponents/inputs/toggle.vue";
 
 const maskStore = useMaskStore();
 const socketStore = useSocketStore();
-
-const imageSrc = ref("");
-let ws: WebSocket | null = null;
 
 // Detectar cambios en el store
 maskStore.$subscribe((mutation) => {
@@ -40,45 +43,6 @@ maskStore.$subscribe((mutation) => {
 
 onMounted(() => {
   maskStore.fetchMaskConfig();
-
-  ws = new WebSocket("ws://localhost:5030"); // ← nuevo puerto
-  ws.binaryType = "blob";
-
-  ws.onopen = () => {
-    console.log("WebSocket conectado");
-  };
-
-  ws.onmessage = (event) => {
-    if (typeof event.data === 'string') {
-      imageSrc.value = `data:image/jpeg;base64,${event.data}`;
-      console.log("✅ Imagen desde base64 string");
-    } else {
-      const reader = new FileReader();
-      reader.onload = () => {
-        imageSrc.value = reader.result as string;
-        console.log("✅ Imagen desde Blob");
-      };
-      reader.readAsDataURL(event.data);
-    }
-  };
-
-
-  ws.onerror = (err) => {
-    console.error("Error WebSocket:", err);
-  };
-
-  ws.onclose = () => {
-    console.warn("WebSocket cerrado. Intentando reconectar en 2 segundos...");
-    setTimeout(() => {
-      location.reload(); // puedes reemplazarlo por reconexión real si prefieres
-    }, 2000);
-  };
 });
 
-onUnmounted(() => {
-  if (ws) {
-    ws.close();
-    ws = null;
-  }
-});
 </script>

@@ -10,7 +10,7 @@
                 Spot Detection Threshold
                 <numberInput v-model="maskStore.spot_threshold" />
             </div>
-            <div>Clear Spot Masks</div>
+            <ClickButton :label="'Clear Spot Masks'"/>
         </div>
         
     </div>
@@ -20,6 +20,7 @@
 import numberInput from '../../../../assets/vueComponents/inputs/numberInput.vue';
 import { useMaskStore } from '../store/maskStore';
 import toggle from '../../../../assets/vueComponents/inputs/toggle.vue';
+import ClickButton from '../../../../assets/vueComponents/inputs/clickButton.vue';
 
 const maskStore = useMaskStore();
 </script>
