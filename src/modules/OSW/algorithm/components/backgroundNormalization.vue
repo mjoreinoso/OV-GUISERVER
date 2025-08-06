@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col w-[35%] p-3  rounded-xl border-2 justify-between">
-        <div class=" text-[1.1vw] grid grid-cols-2 gap-4 ">
-            <div class="flex justify-between items-center col-span-2">
+    <div class="flex flex-col grow p-3  rounded-xl border-2 justify-between">
+        <div class=" text-[1.1vw] grid grid-cols-1 gap-4 ">
+            <div class="flex justify-between items-center col-span-1">
                 <titleSelects :title="'Reject Type'" :value="imageStore.bottle_images"
                     @update:value="val => imageStore.bottle_images = val" />
             </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3 text-[1.1vw] grid grid-cols-2 gap-4 rounded-xl border-2">
+    <div class="p-3 text-[1.1vw] grid grid-cols-2 gap-4 rounded-xl border-2 w-[50%]">
         <div class="flex justify-between items-center">
             <titleSelects :title="'Reject Type'" :value="imageStore.bottle_images"
                 @update:value="val => imageStore.bottle_images = val" />

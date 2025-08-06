@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3 text-[1.1vw] flex flex-col justify-between rounded-xl border-2 space-y-4">
+    <div class="p-3 text-[1.1vw] grow flex flex-col justify-between rounded-xl border-2 space-y-4">
 
         <div class="flex justify-between items-center">
             <span class="w-[5vw]">Enable</span>

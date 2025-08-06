@@ -5,12 +5,12 @@
             <rejectControl />
         </div>
         <div class="flex flex-row w-full justify-between">
-            <div class="max-h-[73.5vh] overflow-y-auto scroll-left w-[30%]">
+            <div class="max-h-[73.5vh] overflow-y-auto scroll-left w-[25%]">
                 <phase1 />
                 <phase2 />
                 <phase3 />
             </div>
-            <div class="w-[70%]">
+            <div class="w-[75%]">
                 <div class="flex flex-row space-x-3">
                     <gradientDetectorSetup />
                     <backgroundNormalization />

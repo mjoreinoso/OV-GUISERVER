@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col p-3  rounded-xl border-2 justify-between">
+    <div class="flex flex-col p-3  rounded-xl border-2 justify-between grow">
 
-        <div class=" text-[1.1vw] grid grid-cols-2 gap-4 ">
+        <div class=" text-[1.1vw] grid grid-cols-1 gap-4 ">
             <div class="flex justify-between items-center">
                 <titleSelects :title="'Source'" :value="imageStore.bottle_images"
                     @update:value="val => imageStore.bottle_images = val" />
