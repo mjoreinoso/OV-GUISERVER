@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row h-full w-full justify-between space-x-3">
-    <div class="flex flex-col justify-between h-full w-[30%]">
+    <div class="flex flex-col justify-between h-full w-[35%]">
       <topDiagonalMask />
       <bottomDiagonalMask />
       <spotMasking />

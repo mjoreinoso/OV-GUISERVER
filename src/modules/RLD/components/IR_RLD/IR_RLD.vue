@@ -1,11 +1,13 @@
 <template>
   <div class="flex flex-col w-full h-full justify-around space-y-3">
     <div class="flex flex-row space-x-3">
-      <div class="flex flex-col self-stretch space-y-3">
+      <div class="flex flex-col self-stretch space-y-3 w-[65%]">
         <IR />
         <LightLevels />
       </div>
-      <LED_Strobe_Timing />
+      <div class="flex flex-col self-stretch w-[35%]">
+        <LED_Strobe_Timing />
+      </div>
     </div>
     <div>
       <Graph />
