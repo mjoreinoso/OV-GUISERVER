@@ -1,27 +1,38 @@
 <template>
-    <div class="flex items-center justify-center space-x-3 rounded-xl">
-        <div class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
-            <img :src="bottleIcon" class="scale-75" alt="Bottle Icon">
-        </div>
-        <div class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
-            <img :src="resolutionIcon" class="scale-75" alt="Resolution Icon">
-        </div>
-        <div class="flex flex-col items-center justify-center w-16 h-16 cursor-pointer bg-secondary rounded-xl"
-            @click="updateBottleCount">
-            <img :src="bottleImage" class="transition duration-300 scale-75" alt="Bottle Icon" />
-            <span class="mt-1 font-semibold">{{ bottleCount }}</span>
-        </div>
-        <div class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
-            <img :src="freezeIcon" class="scale-75" alt="Freeze Icon">
-        </div>
-        <div class="w-16 h-16 font-semibold text-[1.6vw] bg-secondary rounded-xl flex items-center justify-center cursor-pointer"
-            @click="updateSeconds">
-            {{ seconds }}
-        </div>
-        <div class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
-            <img :src="saveIcon" class="scale-75" alt="Save Icon">
-        </div>
+  <div class="flex items-center justify-center space-x-3 rounded-xl">
+    <div v-if="enabledItems.bottle" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+      <img :src="bottleIcon" class="scale-75" alt="Bottle Icon" />
     </div>
+
+    <div v-if="enabledItems.resolution" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+      <img :src="resolutionIcon" class="scale-75" alt="Resolution Icon" />
+    </div>
+
+    <div
+      v-if="enabledItems.groupBottle"
+      class="flex flex-col items-center justify-center w-16 h-16 cursor-pointer bg-secondary rounded-xl"
+      @click="updateBottleCount"
+    >
+      <img :src="bottleImage" class="transition duration-300 scale-75" alt="Bottle Icon" />
+      <span class="mt-1 font-semibold">{{ bottleCount }}</span>
+    </div>
+
+    <div v-if="enabledItems.freeze" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+      <img :src="freezeIcon" class="scale-75" alt="Freeze Icon" />
+    </div>
+
+    <div
+      v-if="enabledItems.seconds"
+      class="w-16 h-16 font-semibold text-[1.6vw] bg-secondary rounded-xl flex items-center justify-center cursor-pointer"
+      @click="updateSeconds"
+    >
+      {{ seconds }}
+    </div>
+
+    <div v-if="enabledItems.save" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+      <img :src="saveIcon" class="scale-75" alt="Save Icon" />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -30,7 +41,6 @@ import bottleIcon from '../../../../../assets/screenIcons/liveFeedIcons/bottle.s
 import resolutionIcon from '../../../../../assets/screenIcons/liveFeedIcons/resolution.svg';
 import saveIcon from '../../../../../assets/screenIcons/liveFeedIcons/save.svg';
 import freezeIcon from '../../../../../assets/screenIcons/liveFeedIcons/freeze.svg';
-import GroupBottle from '../../../../../assets/screenIcons/liveFeedIcons/groupBottle.svg';
 import GroupBottle1 from '../../../../../assets/screenIcons/liveFeedIcons/groupBottle_fr1.svg';
 import GroupBottle2 from '../../../../../assets/screenIcons/liveFeedIcons/groupBottle_fr2.svg';
 import GroupBottle3 from '../../../../../assets/screenIcons/liveFeedIcons/groupBottle_fr3.svg';
@@ -70,5 +80,28 @@ const bottleImage = computed(() => {
             return GroupBottle1;
     }
 });
+
+const props = withDefaults(defineProps<{
+  enabledItems?: {
+    bottle?: boolean;
+    resolution?: boolean;
+    groupBottle?: boolean;
+    freeze?: boolean;
+    seconds?: boolean;
+    save?: boolean;
+  };
+}>(), {
+  enabledItems: () => ({
+    bottle: true,
+    resolution: true,
+    groupBottle: true,
+    freeze: true,
+    seconds: true,
+    save: true
+  })
+});
+
+// Esto te permite acceder a enabledItems directamente en el template
+const { enabledItems } = props;
 
 </script>
