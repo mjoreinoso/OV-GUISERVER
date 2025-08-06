@@ -50,12 +50,12 @@ export const useRFStore = defineStore("rfStore", {
         // Nueva acción para guardar los datos del socket RF
         updateLiveRFResults(payload: {
             RF: number[];
-            LastRjtdRFArray: number[];
+            lastRjtd: number[];
             Average: number[];
             result: number[];
         }) {
             this.RF = payload.RF;
-            this.LastRjtdRFArray = payload.LastRjtdRFArray;
+            this.LastRjtdRFArray = payload.lastRjtd;
             this.Average = payload.Average;
             this.result = payload.result;
         }

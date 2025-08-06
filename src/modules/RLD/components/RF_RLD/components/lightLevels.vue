@@ -24,7 +24,7 @@ const { RF, Average, LastRjtdRFArray } = storeToRefs(rfStore);
     <div class="flex justify-center">
       <valueViewer :value="Average[0] ?? null" />
     </div>
-    <div class="flex justify-center">
+    <div class="flex">
       <valueViewer :value="LastRjtdRFArray[0] ?? null" />
     </div>
   </div>

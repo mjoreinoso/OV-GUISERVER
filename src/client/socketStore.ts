@@ -76,7 +76,7 @@ export const useSocketStore = defineStore("socketStore", {
 
     rfDataEmit(data: any) {
       if (this.isConnected) {
-        this.socket.emit("rfData", data);
+        this.socket.emit("RFData", data);
       } else {
         console.error("❌ Cannot emit, socket not connected");
       }

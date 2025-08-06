@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue';
+import { onMounted} from 'vue';
 import Graph from './components/graph.vue';
 import RF from './components/RF.vue';
 import LightLevels from './components/lightLevels.vue';
