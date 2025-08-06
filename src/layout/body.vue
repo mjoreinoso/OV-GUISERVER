@@ -15,6 +15,7 @@ import StrobeSetup from '../modules/OSW/strobeSetup/strobeSetup.vue'
 import maskSetup from '../modules/OSW/masks/maskSetup.vue'
 import imageSetup from '../modules/OSW/image/imageSetup.vue'
 import algorithmSetup from '../modules/OSW/algorithm/algorithmSetup.vue'
+import RF_RLD from '@/modules/RLD/components/RF_RLD/RF_RLD.vue'
 
 const sidebarStore = useSidebarStore()
 
@@ -23,7 +24,8 @@ const screenMap: Record<string, Component> = {
   image: imageSetup,
   strobeSetup: StrobeSetup,
   masks: maskSetup,
-  algorithm: algorithmSetup
+  algorithm: algorithmSetup,
+  rf: RF_RLD,
 }
 
 const currentComponent = computed(() => screenMap[sidebarStore.currentScreen] || null)
