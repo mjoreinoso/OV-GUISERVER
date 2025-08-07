@@ -18,14 +18,14 @@ const { RF, Average, LastRjtdRFArray } = storeToRefs(rfStore);
 
     <!-- RF RLD Sensor -->
     <div class="flex items-center">RF RLD Sensor</div>
-    <div class="flex justify-center">
-      <valueViewer :value="RF[0] ?? null" />
+    <div class="flex w-full">
+      <valueViewer :value="RF[0] ?? null" class="w-full" />
     </div>
-    <div class="flex justify-center">
-      <valueViewer :value="Average[0] ?? null" />
+    <div class="flex w-full">
+      <valueViewer :value="Average[0] ?? null" class="w-full" />
     </div>
-    <div class="flex">
-      <valueViewer :value="LastRjtdRFArray?.[0] ?? null" />
+    <div class="flex w-full">
+      <valueViewer :value="LastRjtdRFArray?.[0] ?? null" class="w-full" />
     </div>
   </div>
 </template>
