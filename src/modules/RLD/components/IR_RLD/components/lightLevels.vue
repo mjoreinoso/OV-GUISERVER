@@ -10,7 +10,7 @@ const { compArray, irArray, irTotArray, avgArray, lastRjtd, result } = storeToRe
 </script>
 
 <template>
-  <div class="grid gap-x-2 grow text-white text-[1.1vw] w-[55vw] p-3 border-2 rounded-xl"
+  <div class="grid gap-x-2 grow text-white text-[0.95vw] p-3 border-2 rounded-xl"
     style="grid-template-columns: minmax(5vw, 8vw) repeat(5, minmax(0, 20vw));">
     <!-- Encabezado -->
     <div></div>

@@ -1,33 +1,40 @@
 <template>
-    <!--
-    <div class="space-y-3 w-[55%] flex flex-col">
-        <div class="text-[1.4vw] font-bold">RF RLD (Caustic)</div>
-        <div class="flex flex-col space-y-2 p-2 border-2 rounded-xl">
-            <div class="grid grid-cols-2 gap-2">
-                <div class="space-y-3">
-                    <titleInputs title="Inspection Window" placeholder="Enter brightness value" value="100"
-                        @update:value="value => console.log(value)" />
-                    <titleInputs title="Gain" placeholder="Enter zoom value" value="1.0"
-                        @update:value="value => console.log(value)" />
-                    <titleInputs title="Detection Threshold" placeholder="Enter zoom value" value="1.0"
-                        @update:value="value => console.log(value)" />
-                </div>
-                <div  class="space-y-3">
-
-                    <titleInputs title="Trigger Offset" placeholder="Enter zoom value" value="1.0"
-                        @update:value="value => console.log(value)" />
-                    <titleInputs title="Bottle Delay" placeholder="Enter zoom value" value="1.0"
-                        @update:value="value => console.log(value)" />
-                    <titleSelects title="Reject Type" value="Auto" @update:value="value => console.log(value)" />
-                </div>
-            </div>
-
-        </div>
+  <div class="flex flex-col w-full h-full justify-around space-y-3">
+    <div class="flex flex-col self-stretch space-y-3">
+        <RF />
+        <LightLevels />
     </div>
-    -->
+    <div>
+      <Graph />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-// import titleSelects from '../../../../assets/vueComponents/titleSelects.vue';
-// import titleInputs from '../../../../assets/vueComponents/titleInputs.vue';
+import { onMounted, watch } from 'vue';
+import Graph from './components/graph.vue';
+import RF from './components/RF.vue';
+import LightLevels from './components/lightLevels.vue';
+import { useRFStore } from './store/RFStore';
+import { useSocketStore } from '../../../../client/socketStore';
+
+const rfStore = useRFStore();
+const socketStore = useSocketStore();
+
+// Detectar cambios solo en rfData y emitir por socket
+watch(
+  () => rfStore.rfData,
+  (newVal) => {
+    if (newVal.length > 0) {
+      socketStore.rfDataEmit(newVal);
+      console.log('Datos de RF enviados por socket:', newVal);
+    }
+  },
+  { deep: true }
+);
+
+onMounted(async () => {
+  await rfStore.fetchRFData(); // Espera a que lleguen los datos
+  console.log('✅ RF data fetched:', rfStore.rfData);
+});
 </script>

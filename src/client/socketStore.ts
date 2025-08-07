@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import { socket } from "./socket"; // importa el socket ya configurado
 import type { AppSocket } from "./socket";
 import { useIRStore } from "../modules/RLD/components/IR_RLD/store/IRStore";
+import { useRFStore } from "../modules/RLD/components/RF_RLD/store/RFStore";
 
 export const useSocketStore = defineStore("socketStore", {
   state: () => ({
@@ -26,6 +27,14 @@ export const useSocketStore = defineStore("socketStore", {
 
           const irStore = useIRStore();
           irStore.updateLiveIRResults(data);
+        });
+
+        this.socket.on("RFResults", (data) => {
+          console.log("Received RF results:", data);
+          // Aquí puedes manejar los datos recibidos
+
+          const rfStore = useRFStore();
+          rfStore.updateLiveRFResults(data);
         });
 
         this.socket.on("disconnect", () => {
@@ -60,6 +69,14 @@ export const useSocketStore = defineStore("socketStore", {
     imageDataEmit(data: any) {
       if (this.isConnected) {
         this.socket.emit("OSWImageData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
+    },
+
+    rfDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("RFData", data);
       } else {
         console.error("❌ Cannot emit, socket not connected");
       }
