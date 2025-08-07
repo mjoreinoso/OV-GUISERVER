@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-row border-1.5 rounded-xl bg-accent">
         <div class="flex justify-center items-center bg-secondary rounded-l-xl p-2 font-bold">P3</div>
-        <div class="rounded-xl text-[1.1vw] grid grid-cols-2 gap-4 p-3">
+        <div class="rounded-xl text-[0.95vw] grid grid-cols-2 gap-4 p-3">
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">View 1</span>
                 <valueViewer />

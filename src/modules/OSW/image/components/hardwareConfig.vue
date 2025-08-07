@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3 text-[1.1vw] grid grid-cols-2 gap-4">
+    <div class="p-3 text-[0.95vw] grid grid-cols-2 gap-4">
         <div class="flex justify-between items-center">
             <span class="w-[9vw]">Trigger Offset</span>
             <numberInput v-model="imageStore.trigger_offset" />

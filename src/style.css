@@ -46,6 +46,34 @@ select {
   direction: ltr;
 }
 
+/* tailwind.config.css o un archivo .css global */
+.scrollbar-thin-modern {
+  scrollbar-width: thin;              /* Firefox */
+  scrollbar-color: #6b7280 transparent;
+}
+
+.scrollbar-thin-modern::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin-modern::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin-modern::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.5);
+  border-radius: 10px;
+}
+
+.scrollbar-thin-modern > * {
+  direction: ltr;
+}
+
+.scrollbar-thin-modern {
+  direction: rtl;
+}
+
+
 /* Aumentar el ancho, padding y tamaño del texto del toast */
 .custom-toast {
   font-size: 1.3rem;              /* Texto más grande */
