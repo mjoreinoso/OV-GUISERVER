@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-row grow justify-between items-center space-x-3">
-    <div class="text-[1.1vw]">{{ props.title }}</div>
+    <div class="text-[0.85vw]">{{ props.title }}</div>
     <select
-      class="bg-white h-[5vh] grow rounded-lg px-2 text-black"
+      class="bg-white h-[10mm] grow rounded-lg px-2 text-black"
       :value="props.value"
       @change="emit('update:value', castValue(($event.target as HTMLSelectElement).value))"
     >

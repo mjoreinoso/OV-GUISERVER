@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted} from 'vue';
+import { onMounted, watch } from 'vue';
 import Graph from './components/graph.vue';
 import RF from './components/RF.vue';
 import LightLevels from './components/lightLevels.vue';
@@ -21,21 +21,17 @@ import { useSocketStore } from '../../../../client/socketStore';
 const rfStore = useRFStore();
 const socketStore = useSocketStore();
 
-// Detectar cambios en cualquier estado del rfStore (como masks e images)
-rfStore.$subscribe((mutation) => {
-  console.log('Cambio detectado en rfStore:', {
-    type: mutation.type,
-    storeId: mutation.storeId,
-    events: mutation.events
-  });
-  
-  // Obtener el payload del store y enviarlo por socket
-  if (rfStore.rfData.length > 0) {
-    const payload = rfStore.rfData;
-    socketStore.rfDataEmit(payload);
-    console.log('Datos de RF enviados por socket:', payload);
-  }
-});
+// Detectar cambios solo en rfData y emitir por socket
+watch(
+  () => rfStore.rfData,
+  (newVal) => {
+    if (newVal.length > 0) {
+      socketStore.rfDataEmit(newVal);
+      console.log('Datos de RF enviados por socket:', newVal);
+    }
+  },
+  { deep: true }
+);
 
 onMounted(async () => {
   await rfStore.fetchRFData(); // Espera a que lleguen los datos

@@ -1,11 +1,11 @@
 <template>
-    <div class="p-3 text-[1.1vw] grid grid-cols-2 gap-4 w-[50%] rounded-xl border-2">
+    <div class="p-3 text-[0.85vw] grid grid-cols-2 gap-4 w-[41%] rounded-xl border-2">
         <div class="flex justify-between items-center">
             <span class="w-[9vw]">Window</span>
             <numberInput v-model="imageStore.trigger_offset" />
         </div>
         <div class="flex justify-between items-center">
-            <span class="w-[9vw]">Inspection</span>
+            <span class="w-[9vw]">Inspection Display</span>
             <Toggle v-model="booleanRef" />
         </div>
         <div class="flex justify-between items-center">
@@ -14,11 +14,11 @@
         </div>
         <div class="flex justify-between items-center">
             <div>
-                Algorithm 1
+                Alg 1
                 <input type="checkbox" v-model="imageStore.bottle_images" />
             </div>
             <div>
-                Algorithm 2
+                Alg 2
                 <input type="checkbox" v-model="imageStore.bottle_images" />
             </div>
         </div>

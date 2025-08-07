@@ -7,7 +7,7 @@
     </div>
     <div class="w-[65%] h-full flex-col flex items-end space-y-3">
       <div class="flex items-center space-x-3">
-        <div class="font-semibold text-[1.1vw]">Mask Region Outline Display</div>
+        <div class="font-semibold text-[0.95vw]">Mask Region Outline Display</div>
         <toggle v-model="maskStore.mask_display" />
       </div>
       <liveFeed />
