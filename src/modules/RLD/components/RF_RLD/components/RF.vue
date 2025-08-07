@@ -7,14 +7,19 @@
         @update:value="val => data.gain_a = val" :min="0" :max="255" :step="1" :precision="0"
         :readonlyIncrementLock="isGainAtMax" />
       <div class="col-span-1 flex items-center">
-        <titleSelects title="Reject Type" :value="data.reject_type" @update:value="val => data.reject_type = val" />
+        <titleSelects title="Reject Type" :value="data.reject_type" :options="rejectTypeOptions" @update:value="val => data.reject_type = val" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, watch, ref } from 'vue';
+// Opciones dummy para Reject Type
+const rejectTypeOptions = ref([
+  { label: 'VR1', value: 0 },
+  { label: 'VR4', value: 1 },
+]);
 import titleInputs from '../../../../../assets/vueComponents/titleInputs.vue';
 import titleSelects from '../../../../../assets/vueComponents/titleSelects.vue';
 import { useRFStore } from '../store/RFStore';
