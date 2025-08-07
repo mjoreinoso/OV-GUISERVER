@@ -1,8 +1,8 @@
 <template>
-    <div class="p-3  grow flex flex-col rounded-xl border-2 space-y-3 grow">
+    <div class="p-3  grow flex flex-col rounded-xl border-2 justify-center space-y-3 grow">
         <div class="font-bold text-[0.95vw]">Detect Filter</div>
 
-        <div class="text-[0.85vw]">
+        <div class="text-[0.85vw] space-y-3">
             <div class="flex justify-between items-center">
                 <span class="w-[5vw]">Enable</span>
                 <Toggle v-model="booleanRef" />

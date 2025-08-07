@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col p-3  rounded-xl border-2 justify-between grow">
+    <div class="flex flex-col p-3  rounded-xl border-2 justify-center grow">
         <div class="font-bold pb-2">Gradient Detector Setup</div>
 
         <div class=" text-[0.85vw] grid grid-cols-2 gap-4 ">

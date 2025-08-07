@@ -1,7 +1,6 @@
 <template>
-  <div class="flex flex-col">
     <div
-      class="grid grid-cols-[1.2vw_0.5fr_0.5fr] text-[0.9vw] items-center gap-3 p-2 border-2 rounded-xl"
+      class="grid grid-cols-[1.2vw_0.5fr_0.5fr] text-[0.9vw] items-center gap-3 p-2 border-2 rounded-xl grow"
     >
       <!-- Encabezados -->
       <div class="text-center text-[1.2vw] font-bold leading-5">P2</div>
@@ -28,7 +27,6 @@
       <valueViewer />
       <valueViewer />
     </div>
-  </div>
 </template>
 
 

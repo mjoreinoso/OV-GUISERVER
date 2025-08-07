@@ -1,32 +1,26 @@
 <template>
     <div class="flex flex-row w-full h-full space-x-3">
         <div class="w-[20%] flex flex-col space-y-3">
-            <div class="space-y-2">
-                <phase1 />
-                <phase2 />
-                <phase3 />
-            </div>
+            <phase1 />
+            <phase2 />
+            <phase3 />
 
         </div>
-        <div class="w-[80%] space-y-3">
-            <div class=" flex flex-row space-x-3">
-                <div class="flex flex-row space-x-3">
-                    <temporaryRejects class="w-[18%]" />
-                    <windowControl />
-                    <rejectControl />
+        <div class="flex flex-col w-[80%] space-y-3">
+            <div class="flex flex-row space-x-3">
+                <temporaryRejects class="w-[18%]" />
+                <windowControl />
+                <rejectControl />
 
-                </div>
             </div>
-            <div class="flex flex-row w-full justify-between gap-x-3">
+            <div class="flex flex-row w-full justify-between gap-x-3 grow">
                 <div class="flex items-center justify-center border-2 rounded-xl w-[60%]">
                     Live Feed
                 </div>
-                <div class="w-[40%]">
-                    <div class="flex flex-col space-y-3 grow">
-                        <gradientDetectorSetup />
-                        <backgroundNormalization />
-                        <detectFilter />
-                    </div>
+                <div class="w-[40%] flex flex-col space-y-3 grow">
+                    <gradientDetectorSetup />
+                    <backgroundNormalization />
+                    <detectFilter />
                 </div>
             </div>
         </div>
