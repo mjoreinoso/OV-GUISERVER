@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col grow p-3  rounded-xl border-2 justify-between grow">
+    <div class="flex flex-col grow p-3  rounded-xl border-2 justify-center grow">
         <div class="font-bold pb-2">Background Normalization</div>
         <div class=" text-[0.85vw] grid grid-cols-2 gap-4 ">
             <div class="flex justify-between items-center col-span-2">
