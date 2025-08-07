@@ -1,10 +1,16 @@
 <!-- components/LiveFeed.vue -->
 <template>
-    <div class="w-full grow p-3 bg-accent rounded-xl flex items-center justify-center">
-        <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-h-full max-w-full rounded-xl" />
+    <div class="flex items-center justify-center w-full p-3 grow bg-accent rounded-xl">
+        <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-w-full max-h-full rounded-xl" />
     </div>
     <div class="w-full h-[10%]  bg-accent rounded-xl flex items-center justify-center space-x-3">
-        <liveFeedControl />
+        <liveFeedControl :enabledItems="{
+            bottle: true,
+            resolution: true,
+            groupBottle: true,
+            freeze: true,
+            seconds: true,
+            save: true }" />
     </div>
 </template>
 
