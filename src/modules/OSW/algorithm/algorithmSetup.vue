@@ -13,9 +13,16 @@
                 <rejectControl />
 
             </div>
-            <div class="flex flex-row w-full justify-between gap-x-3 grow">
-                <div class="flex items-center justify-center border-2 rounded-xl w-[60%]">
-                    Live Feed
+            <div class="flex flex-row justify-between w-full gap-x-3 grow">
+                <div class="flex flex-col items-center justify-center border-2 rounded-xl w-[60%]">
+                    <LiveFeed :enabledItems="{
+                        bottle: true,
+                        resolution: false,
+                        groupBottle: true,
+                        freeze: true,
+                        seconds: true,
+                        save: true
+                    }" />
                 </div>
                 <div class="w-[40%] flex flex-col space-y-3 grow">
                     <gradientDetectorSetup />
@@ -39,6 +46,7 @@ import phase3 from "./components/viewRejects/phase3.vue";
 import temporaryRejects from "./components/temporaryRejects.vue";
 import { useAlgorithmStore } from './store/algorithmStore';
 import { onMounted } from 'vue';
+import LiveFeed from "../masks/components/camera/liveFeed.vue";
 
 const algorithmStore = useAlgorithmStore();
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row h-full w-full justify-between space-x-3">
+  <div class="flex flex-row justify-between w-full h-full space-x-3">
     <div class="flex flex-col justify-between h-full w-[35%]">
       <topDiagonalMask />
       <bottomDiagonalMask />
@@ -10,7 +10,14 @@
         <div class="font-semibold text-[0.95vw]">Mask Region Outline Display</div>
         <toggle v-model="maskStore.mask_display" />
       </div>
-      <liveFeed />
+      <LiveFeed :enabledItems="{
+        bottle: true,
+        resolution: false,
+        groupBottle: true,
+        freeze: true,
+        seconds: true,
+        save: true
+      }" />
     </div>
   </div>
 </template>
@@ -22,7 +29,7 @@ import bottomDiagonalMask from "./components/bottomDiagonalMask.vue";
 import spotMasking from "./components/spotMasking.vue";
 import { useMaskStore } from "./store/maskStore";
 import { useSocketStore } from "../../../client/socketStore";
-import liveFeed from "./components/camera/liveFeed.vue";
+import LiveFeed from "./components/camera/liveFeed.vue";
 import toggle from "../../../assets/vueComponents/inputs/toggle.vue";
 
 const maskStore = useMaskStore();

@@ -4,19 +4,25 @@
         <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-w-full max-h-full rounded-xl" />
     </div>
     <div class="w-full h-[10%]  bg-accent rounded-xl flex items-center justify-center space-x-3">
-        <liveFeedControl :enabledItems="{
-            bottle: true,
-            resolution: true,
-            groupBottle: true,
-            freeze: true,
-            seconds: true,
-            save: true }" />
+        <liveFeedControl :enabledItems="props.enabledItems" />
     </div>
 </template>
 
 <script setup lang="ts">
 import liveFeedControl from "./liveFeedControl.vue";
 import { onMounted, onUnmounted, ref } from "vue";
+
+
+const props = defineProps<{
+  enabledItems: {
+    bottle: boolean;
+    resolution: boolean;
+    groupBottle: boolean;
+    freeze: boolean;
+    seconds: boolean;
+    save: boolean;
+  };
+}>();
 
 const imageSrc = ref("");
 let ws: WebSocket | null = null;
