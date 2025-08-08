@@ -1,5 +1,7 @@
 // store/algorithmStore.ts
 import { defineStore } from "pinia";
+import axios from "axios";
+import { useSocketStore } from "../../../../client/socketStore";
 
 export const useAlgorithmStore = defineStore("algorithm", {
   state: () => ({
@@ -25,26 +27,47 @@ export const useAlgorithmStore = defineStore("algorithm", {
     filter_kernel: 0,
     filter_threshold: 0,
     rejection_type: 0,
-    id: null
+    id: null,
+    isSyncing: false,
   }),
 
   actions: {
     async fetchAlgorithmConfig(window_id: number, algorithm_id: number) {
       try {
+        this.isSyncing = true;
         const url = `http://127.0.0.1:5000/inspection/osw/algorithm?window_id=${window_id}&algorithm_id=${algorithm_id}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        Object.assign(this, data);
-        console.log("Algorithm config fetched:", data);
+        const res = await axios.get(url);
+        Object.assign(this, res.data);
+        console.log("Algorithm config fetched:", res.data);
       } catch (error) {
         console.error("Error fetching algorithm config:", error);
+      } finally {
+        setTimeout(() => {
+          this.isSyncing = false;
+          console.log("🟡 Syncing finished");
+        }, 0);
+      }
+    },
+
+    async putInspectionEnable() {
+      try {
+        const payload = {
+          window_id: this.window_id, // display is 1-based
+          inspection_enable: this.inspection_enable,
+        };
+        await axios.put(
+          "http://127.0.0.1:5000/inspection/osw/algorithm/display",
+          payload
+        );
+        console.log("PUT /inspection/osw/algorithm/display", payload);
+      } catch (e) {
+        console.error("Failed to PUT inspection_enable:", e);
       }
     },
 
     getAlgorithmPayload() {
       return {
         window_id: this.window_id,
-        inspection_enable: this.inspection_enable,
         algorithm_id: this.algorithm_id,
         inspection: this.inspection,
         rejection_enable: this.rejection_enable,
@@ -65,8 +88,17 @@ export const useAlgorithmStore = defineStore("algorithm", {
         filter_kernel: this.filter_kernel,
         filter_threshold: this.filter_threshold,
         rejection_type: this.rejection_type,
-        id: this.id
+        id: this.id,
       };
-    }
-  }
+    },
+
+    emitAlgorithmConfig() {
+      if (this.isSyncing) {
+        return;
+      }
+      const socketStore = useSocketStore();
+      const payload = [this.getAlgorithmPayload()];
+      socketStore.algorithmDataEmit(payload);
+    },
+  },
 });

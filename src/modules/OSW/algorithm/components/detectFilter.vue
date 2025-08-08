@@ -5,18 +5,18 @@
         <div class="text-[0.85vw] space-y-3">
             <div class="flex justify-between items-center">
                 <span class="w-[5vw]">Enable</span>
-                <Toggle v-model="algorithmStore.filter_enable" />
+                <Toggle v-model="algorithmStore.filter_enable" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
 
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="flex justify-between items-center">
                     <span class="w-[7vw]">Kernel Size</span>
-                    <numberInput v-model="algorithmStore.filter_kernel" />
+                    <numberInput v-model="algorithmStore.filter_kernel" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="w-[7vw]">Threshold</span>
-                    <numberInput v-model="algorithmStore.filter_threshold" />
+                    <numberInput v-model="algorithmStore.filter_threshold" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
                 </div>
             </div>
         </div>
@@ -28,6 +28,6 @@
 import numberInput from "../../../../assets/vueComponents/inputs/numberInput.vue";
 import Toggle from "../../../../assets/vueComponents/inputs/toggle.vue";
 import { useAlgorithmStore } from '../store/algorithmStore';
-
 const algorithmStore = useAlgorithmStore();
+
 </script>

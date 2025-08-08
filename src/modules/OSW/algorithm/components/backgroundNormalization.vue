@@ -4,23 +4,23 @@
         <div class=" text-[0.85vw] grid grid-cols-2 gap-4 ">
             <div class="flex justify-between items-center col-span-2">
                 <titleSelects :title="'Source'" :value="algorithmStore.bck_source" :options="backgroundSourceOptions"
-                    @update:value="val => algorithmStore.bck_source = val" />
+                    @update:value="val => { algorithmStore.bck_source = val; algorithmStore.emitAlgorithmConfig(); }" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Detect Sensitivity</span>
-                <numberInput v-model="algorithmStore.bck_sensitivity" />
+                <numberInput v-model="algorithmStore.bck_sensitivity" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Reg. Kernel Width</span>
-                <numberInput v-model="algorithmStore.bck_kernel_width" />
+                <numberInput v-model="algorithmStore.bck_kernel_width" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Reg. Kernel Height</span>
-                <numberInput v-model="algorithmStore.bck_kernel_height" />
+                <numberInput v-model="algorithmStore.bck_kernel_height" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Offset Strength</span>
-                <numberInput v-model="algorithmStore.bck_kernel_offset" />
+                <numberInput v-model="algorithmStore.bck_kernel_offset" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
         </div>
     </div>

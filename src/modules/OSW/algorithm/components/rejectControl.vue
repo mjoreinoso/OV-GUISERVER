@@ -2,19 +2,19 @@
     <div class="p-3 text-[0.85vw] grid grid-cols-2 gap-4 rounded-xl border-2 w-[40%]">
         <div class="flex justify-between items-center">
             <titleSelects :title="'Reject Type'" :value="algorithmStore.rejection_type" :options="rejectTypeOptions"
-                @update:value="val => algorithmStore.rejection_type = val" />
+                @update:value="val => { algorithmStore.rejection_type = val; algorithmStore.emitAlgorithmConfig(); }" />
         </div>
         <div class="flex justify-between items-center">
             <span class="w-[9vw]">Rejection</span>
-            <Toggle v-model="algorithmStore.rejection_enable" />
+            <Toggle v-model="algorithmStore.rejection_enable" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
         </div>
         <div class="flex justify-between items-center">
             <titleSelects :title="'Reject When'" :value="algorithmStore.rejection_when" :options="rejectWhenOptions"
-                @update:value="val => algorithmStore.rejection_when = val" />
+                @update:value="val => { algorithmStore.rejection_when = val; algorithmStore.emitAlgorithmConfig(); }" />
         </div>
         <div class="flex justify-between items-center">
             <span class="w-[9vw]">Threshold</span>
-            <numberInput v-model="algorithmStore.threshold" />
+            <numberInput v-model="algorithmStore.threshold" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
         </div>
     </div>
 </template>

@@ -53,4 +53,6 @@ const algorithmStore = useAlgorithmStore();
 onMounted(() => {
   algorithmStore.fetchAlgorithmConfig(0, 0);
 });
+
+
 </script>

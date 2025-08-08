@@ -9,13 +9,13 @@
         <!-- Inspection Enable -->
         <div class="flex justify-between items-center">
             <span class="w-[9vw]">Inspection Display</span>
-            <Toggle v-model="algorithmStore.inspection_enable" />
+            <Toggle v-model="algorithmStore.inspection_enable" @update:model-value="algorithmStore.putInspectionEnable()" />
         </div>
 
         <!-- Inspection Type -->
         <div class="flex justify-between items-center">
             <titleSelects :title="'Inspection'" :value="algorithmStore.inspection" :options="inspectionOptions"
-                @update:value="val => algorithmStore.inspection = val" />
+                @update:value="val => { algorithmStore.inspection = val; algorithmStore.emitAlgorithmConfig(); }" />
         </div>
 
         <!-- Algorithm ID Radio Buttons -->

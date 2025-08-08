@@ -5,27 +5,27 @@
         <div class=" text-[0.85vw] grid grid-cols-2 gap-4 ">
             <div class="flex justify-between items-center">
                 <titleSelects :title="'Source'" :value="algorithmStore.grd_source" :options="gradientSourceOptions"
-                    @update:value="val => algorithmStore.grd_source = val" />
+                    @update:value="val => { algorithmStore.grd_source = val; algorithmStore.emitAlgorithmConfig(); }" />
             </div>
             <div class="flex justify-between items-center">
                 <titleSelects :title="'Type'" :value="algorithmStore.grd_type" :options="gradientTypeOptions"
-                    @update:value="val => algorithmStore.grd_type = val" />
+                    @update:value="val => { algorithmStore.grd_type = val; algorithmStore.emitAlgorithmConfig(); }" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Group Filter Level</span>
-                <numberInput v-model="algorithmStore.grd_filter" />
+                <numberInput v-model="algorithmStore.grd_filter" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Width</span>
-                <numberInput v-model="algorithmStore.grd_width" />
+                <numberInput v-model="algorithmStore.grd_width" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Height</span>
-                <numberInput v-model="algorithmStore.grd_height" />
+                <numberInput v-model="algorithmStore.grd_height" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
             <div class="flex justify-between items-center">
                 <span class="w-[9vw]">Light Comp.</span>
-                <numberInput v-model="algorithmStore.grd_light_comp" />
+                <numberInput v-model="algorithmStore.grd_light_comp" @update:model-value="algorithmStore.emitAlgorithmConfig()" />
             </div>
         </div>
     </div>
