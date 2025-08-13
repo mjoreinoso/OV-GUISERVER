@@ -41,10 +41,10 @@ import bottleIcon from '../../../../../../assets/screenIcons/liveFeedIcons/RF_Re
 import resolutionIcon from '../../../../../../assets/screenIcons/liveFeedIcons/resolution.svg';
 import saveIcon from '../../../../../../assets/screenIcons/liveFeedIcons/save.svg';
 import freezeIcon from '../../../../../../assets/screenIcons/liveFeedIcons/freeze.svg';
-import GroupBottle1 from '../../../../../../assets/screenIcons/liveFeedIcons/groupBottle1_fr.svg';
-import GroupBottle2 from '../../../../../../assets/screenIcons/liveFeedIcons/groupBottle2_fr.svg';
-import GroupBottle3 from '../../../../../../assets/screenIcons/liveFeedIcons/groupBottle3_fr.svg';
-import GroupBottle4 from '../../../../../../assets/screenIcons/liveFeedIcons/groupBottle4_fr.svg';
+import GroupBottle1 from '../../../../../assets/screenIcons/liveFeedIcons/GroupBottle1_fr.svg';
+import GroupBottle2 from '../../../../../assets/screenIcons/liveFeedIcons/GroupBottle2_fr.svg';
+import GroupBottle3 from '../../../../../assets/screenIcons/liveFeedIcons/GroupBottle3_fr.svg';
+import GroupBottle4 from '../../../../../assets/screenIcons/liveFeedIcons/GroupBottle4_fr.svg';
 
 const seconds = ref(0);
 const bottleCount = ref(1);
