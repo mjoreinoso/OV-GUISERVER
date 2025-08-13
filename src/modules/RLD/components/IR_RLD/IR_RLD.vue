@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full h-full justify-around space-y-3">
+  <div class="flex flex-col justify-around w-full h-full space-y-3">
     <div class="flex flex-row space-x-3">
       <div class="flex flex-col self-stretch space-y-3 w-[65%]">
         <IR />
@@ -9,7 +9,15 @@
         <LED_Strobe_Timing />
       </div>
     </div>
-    <div>
+    <div class="flex justify-around w-full h-full space-y-3">
+      <LiveFeed :enabledItems="{
+        bottle: true,
+        resolution: true,
+        groupBottle: false,
+        freeze: true,
+        seconds: true,
+        save: true
+      }" />
       <Graph />
     </div>
   </div>
@@ -23,6 +31,7 @@ import LED_Strobe_Timing from './components/LED_Strobe_Timing.vue';
 import LightLevels from './components/lightLevels.vue';
 import { useIRStore } from './store/IRStore';
 import { useSocketStore } from '../../../../client/socketStore';
+import LiveFeed from './components/camera/liveFeed.vue';
 
 const irStore = useIRStore();
 const socketStore = useSocketStore();
