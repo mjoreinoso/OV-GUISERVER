@@ -1,5 +1,6 @@
 // store/imageStore.ts
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export const useImageStore = defineStore("image", {
   state: () => ({
@@ -21,10 +22,10 @@ export const useImageStore = defineStore("image", {
   actions: {
     async fetchImageConfig() {
       try {
-        const res = await fetch("http://127.0.0.1:5000/inspection/osw/image");
-        const json = await res.json();
-        if (Array.isArray(json) && json.length > 0) {
-          Object.assign(this, json[0]); // Actualiza el estado con la primera entrada
+        const res = await axios.get("http://127.0.0.1:5000/inspection/osw/image");
+        const data = res.data;
+        if (Array.isArray(data) && data.length > 0) {
+          Object.assign(this, data[0]); // Actualiza el estado con la primera entrada
         }
       } catch (error) {
         console.error("Error fetching image config:", error);

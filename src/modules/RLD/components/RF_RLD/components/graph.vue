@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-center items-center border-2 rounded-xl p-2">
-      <div class="h-[55vh] w-[90vw]"><chartGraph /></div>
+    <div class="flex items-center justify-center p-2 border-2 rounded-xl">
+      <div class="h-[55vh] w-[40vw]"><chartGraph /></div>
     </div>
 </template>
 

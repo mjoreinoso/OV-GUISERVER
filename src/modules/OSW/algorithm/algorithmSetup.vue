@@ -1,21 +1,28 @@
 <template>
     <div class="flex flex-row w-full h-full space-x-3">
-        <div class="w-[20%] flex flex-col space-y-3">
+        <div class="w-[18%] flex flex-col space-y-3">
             <phase1 />
             <phase2 />
             <phase3 />
 
         </div>
-        <div class="flex flex-col w-[80%] space-y-3">
+        <div class="flex flex-col w-[82%] space-y-3">
             <div class="flex flex-row space-x-3">
                 <temporaryRejects class="w-[18%]" />
                 <windowControl />
                 <rejectControl />
 
             </div>
-            <div class="flex flex-row w-full justify-between gap-x-3 grow">
-                <div class="flex items-center justify-center border-2 rounded-xl w-[60%]">
-                    Live Feed
+            <div class="flex flex-row justify-between w-full gap-x-3 grow">
+                <div class="flex flex-col items-center justify-center border-2 rounded-xl w-[60%]">
+                    <LiveFeed :enabledItems="{
+                        bottle: true,
+                        resolution: false,
+                        groupBottle: true,
+                        freeze: true,
+                        seconds: true,
+                        save: true
+                    }" />
                 </div>
                 <div class="w-[40%] flex flex-col space-y-3 grow">
                     <gradientDetectorSetup />
@@ -37,4 +44,15 @@ import phase1 from "./components/viewRejects/phase1.vue";
 import phase2 from "./components/viewRejects/phase2.vue";
 import phase3 from "./components/viewRejects/phase3.vue";
 import temporaryRejects from "./components/temporaryRejects.vue";
+import { useAlgorithmStore } from './store/algorithmStore';
+import { onMounted } from 'vue';
+import LiveFeed from "../masks/components/camera/liveFeed.vue";
+
+const algorithmStore = useAlgorithmStore();
+
+onMounted(() => {
+  algorithmStore.fetchAlgorithmConfig(0, 0);
+});
+
+
 </script>

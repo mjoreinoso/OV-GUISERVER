@@ -80,6 +80,14 @@ export const useSocketStore = defineStore("socketStore", {
       } else {
         console.error("❌ Cannot emit, socket not connected");
       }
-    }
+    },
+
+    algorithmDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("OSWAlgorithmData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
+    },
   },
 });
