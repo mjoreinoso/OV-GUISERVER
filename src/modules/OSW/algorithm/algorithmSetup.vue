@@ -11,11 +11,10 @@
                 <temporaryRejects class="w-[18%]" />
                 <windowControl />
                 <rejectControl />
-
             </div>
             <div class="flex flex-row justify-between w-full gap-x-3 grow">
                 <div class="flex flex-col items-center justify-centerl w-[60%]">
-                    <LiveFeed :enabledItems="{
+                    <LiveFeed bottleType="OSW" :enabledItems="{
                         bottle: true,
                         resolution: false,
                         groupBottle: true,
@@ -46,7 +45,7 @@ import phase3 from "./components/viewRejects/phase3.vue";
 import temporaryRejects from "./components/temporaryRejects.vue";
 import { useAlgorithmStore } from './store/algorithmStore';
 import { onMounted } from 'vue';
-import LiveFeed from "../masks/components/camera/liveFeed.vue";
+import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 
 const algorithmStore = useAlgorithmStore();
 

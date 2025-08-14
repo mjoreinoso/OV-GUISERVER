@@ -14,7 +14,7 @@
           freeze: true,
           seconds: true,
           save: true
-        }" />
+        }" bottleType="RF"/>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@ import RF from './components/RF.vue';
 import LightLevels from './components/lightLevels.vue';
 import { useRFStore } from './store/RFStore';
 import { useSocketStore } from '../../../../client/socketStore';
-import LiveFeed from './components/camera/liveFeed.vue';
+import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 
 
 const rfStore = useRFStore();

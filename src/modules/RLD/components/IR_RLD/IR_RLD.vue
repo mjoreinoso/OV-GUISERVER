@@ -19,7 +19,7 @@
           freeze: true,
           seconds: true,
           save: true
-        }" />
+        }" bottleType="IR" />
       </div>
       
     </div>
@@ -34,7 +34,7 @@ import LED_Strobe_Timing from './components/LED_Strobe_Timing.vue';
 import LightLevels from './components/lightLevels.vue';
 import { useIRStore } from './store/IRStore';
 import { useSocketStore } from '../../../../client/socketStore';
-import LiveFeed from './components/camera/liveFeed.vue';
+import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 
 const irStore = useIRStore();
 const socketStore = useSocketStore();

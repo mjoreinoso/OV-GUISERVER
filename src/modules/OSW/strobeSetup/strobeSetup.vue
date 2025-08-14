@@ -1,12 +1,19 @@
 <template>
     <div class="flex flex-row h-full space-x-3">
         <ledStrobes class="w-[35%]" />
-        <camera class="w-[65%]" />
+        <LiveFeed :enabledItems="{
+          bottle: true,
+          resolution: false,
+          groupBottle: true,
+          freeze: true,
+          seconds: true,
+          save: true
+          }" bottleType="OSW" />
     </div>
 </template>
 
 <script setup lang="ts">
-import camera from '../../../assets/vueComponents/camera/camera.vue';
+import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 import ledStrobes from './components/ledStrobes.vue';
 import { useStrobeStore } from './store/strobeStore';
 import { onMounted } from 'vue';

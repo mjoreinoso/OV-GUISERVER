@@ -17,7 +17,7 @@
         freeze: true,
         seconds: true,
         save: true
-      }" />
+      }" bottleType="OSW" />
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ import bottomDiagonalMask from "./components/bottomDiagonalMask.vue";
 import spotMasking from "./components/spotMasking.vue";
 import { useMaskStore } from "./store/maskStore";
 import { useSocketStore } from "../../../client/socketStore";
-import LiveFeed from "./components/camera/liveFeed.vue";
+import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 import toggle from "../../../assets/vueComponents/inputs/toggle.vue";
 
 const maskStore = useMaskStore();

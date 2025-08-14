@@ -1,12 +1,14 @@
 <!-- components/LiveFeed.vue -->
 <template>
-    <div class="flex flex-col h-full w-full space-y-3">
+    <div class="flex flex-col w-full h-full">
         <div class="flex items-center justify-center w-full p-3 grow bg-accent rounded-xl">
-            <img id="live-img" :src="imageSrc" alt="Live Feed"
-                class="object-contain max-w-full max-h-full rounded-xl" />
+            <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-w-full max-h-full rounded-xl" />
         </div>
         <div class="w-full h-[10%] bg-accent rounded-xl flex items-center justify-center space-x-3">
-            <liveFeedControl :enabledItems="props.enabledItems" />
+            <liveFeedControl 
+                :enabledItems="props.enabledItems" 
+                :bottleType="props.bottleType" 
+            />
         </div>
     </div>
 </template>
@@ -25,6 +27,7 @@ const props = defineProps<{
         seconds: boolean;
         save: boolean;
     };
+    bottleType?: 'IR' | 'RF' | 'OSW'; // 👈 nueva prop
 }>();
 
 const imageSrc = ref("");
