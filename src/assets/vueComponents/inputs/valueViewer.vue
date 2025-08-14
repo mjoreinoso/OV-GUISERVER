@@ -3,7 +3,7 @@
     <input
       readonly
       :value="displayValue"
-      class="w-full h-[10mm] text-center text-[6.5mm] rounded-lg pointer-events-none select-none transition-all duration-200"
+      class="w-full h-[9mm] text-center text-[6.5mm] rounded-lg pointer-events-none select-none transition-all duration-200"
       :class="[
         'text-black',
         backgroundColor

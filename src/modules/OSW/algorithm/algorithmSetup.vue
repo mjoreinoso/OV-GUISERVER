@@ -14,7 +14,7 @@
 
             </div>
             <div class="flex flex-row justify-between w-full gap-x-3 grow">
-                <div class="flex flex-col items-center justify-center border-2 rounded-xl w-[60%]">
+                <div class="flex flex-col items-center justify-centerl w-[60%]">
                     <LiveFeed :enabledItems="{
                         bottle: true,
                         resolution: false,

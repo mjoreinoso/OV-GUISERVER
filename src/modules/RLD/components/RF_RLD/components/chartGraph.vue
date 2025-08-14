@@ -73,7 +73,7 @@ const options = {
       labels: {
         color: '#FFFFFF',
         font: {
-          size: 16
+          size: 12
         }
       }
     }
@@ -85,14 +85,14 @@ const options = {
         text: 'Index',
         color: '#FFFFFF',
         font: {
-          size: 16,
+          size: 12,
           weight: 'bold' as const
         }
       },
       ticks: {
         color: '#FFFFFF',
         font: {
-          size: 14
+          size: 10
         }
       }
     },
@@ -104,14 +104,14 @@ const options = {
         text: 'Value',
         color: '#FFFFFF',
         font: {
-          size: 16,
+          size: 12,
           weight: 'bold' as const
         }
       },
       ticks: {
         color: '#FFFFFF',
         font: {
-          size: 14
+          size: 10
         }
       }
     }

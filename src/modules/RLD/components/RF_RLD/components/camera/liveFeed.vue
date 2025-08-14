@@ -1,6 +1,6 @@
 <!-- components/LiveFeed.vue -->
 <template>
-    <div class="flex flex-col w-full h-full">
+    <div class="flex flex-col w-full h-full space-y-3">
         <div class="flex items-center justify-center w-full p-3 grow bg-accent rounded-xl">
             <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-w-full max-h-full rounded-xl" />
         </div>

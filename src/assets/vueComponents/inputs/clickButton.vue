@@ -1,7 +1,7 @@
 <template>
   <button
     @click="handleClick"
-    class="w-full p-2 bg-secondary active:bg-[#1B4AA8] active:scale-95 text-white text-[0.85vw] font-bold rounded-2xl shadow-xl transition-all duration-150 ease-out flex items-center justify-center select-none"
+    class="w-full p-2 bg-secondary active:bg-[#1B4AA8] active:scale-95 text-white text-[0.95vw] font-bold rounded-2xl shadow-xl transition-all duration-150 ease-out flex items-center justify-center select-none"
   >
     {{ props.label }}
   </button>
