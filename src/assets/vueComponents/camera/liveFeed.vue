@@ -1,10 +1,10 @@
 <!-- components/LiveFeed.vue -->
 <template>
-    <div class="flex flex-col w-full h-full">
-        <div class="flex items-center justify-center w-full p-3 grow bg-accent rounded-xl">
+    <div class="flex flex-col w-full h-full space-y-4 rounded-xl">
+        <div class="flex items-center justify-center w-full p-3 border-2 grow bg-accent rounded-xl">
             <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-w-full max-h-full rounded-xl" />
         </div>
-        <div class="w-full h-[10%] bg-accent rounded-xl flex items-center justify-center space-x-3">
+        <div class="w-full h-[10%] bg-accent rounded-xl flex items-center justify-center space-x-3 border-2">
             <liveFeedControl 
                 :enabledItems="props.enabledItems" 
                 :bottleType="props.bottleType" 
