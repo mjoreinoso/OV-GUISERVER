@@ -98,7 +98,7 @@ export const useAlgorithmStore = defineStore("algorithm", {
       }
       const socketStore = useSocketStore();
       const payload = [this.getAlgorithmPayload()];
-      socketStore.horizontalREmit(payload);
+      socketStore.horizontalDataEmit(payload);
     },
   },
 });
