@@ -17,6 +17,7 @@ import imageSetup from '../modules/OSW/image/imageSetup.vue'
 import algorithmSetup from '../modules/OSW/algorithm/algorithmSetup.vue'
 import RF_RLD from '@/modules/RLD/components/RF_RLD/RF_RLD.vue'
 import Vertical_R  from '../modules/OSW/VerticalR/algorithmSetup.vue'
+import Horizontal_R from '../modules/OSW/HorizontalR/algorithmSetup.vue'
 const sidebarStore = useSidebarStore()
 
 const screenMap: Record<string, Component> = {
@@ -27,6 +28,7 @@ const screenMap: Record<string, Component> = {
   algorithm: algorithmSetup,
   rf: RF_RLD,
   vr: Vertical_R,
+  hr: Horizontal_R
 }
 
 const currentComponent = computed(() => screenMap[sidebarStore.currentScreen] || null)

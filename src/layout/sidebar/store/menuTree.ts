@@ -12,7 +12,8 @@ export const menuTree = {
           masks: { label: 'Masks' },
           algorithm: { label: 'Algorithm' },
           strobeSetup: { label: 'Strobe Setup' },
-          vr: { label: 'Vertical Registration'}
+          vr: { label: 'Vertical Registration'},
+          hr: { label: 'Horizontal Registration'}
         }
       },
       rld: {
