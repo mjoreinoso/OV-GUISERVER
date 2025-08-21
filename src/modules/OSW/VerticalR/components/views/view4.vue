@@ -1,0 +1,21 @@
+<template>
+    <!-- View 1 -->
+    <div class="grid grid-cols-1 gap-2">
+        <div class="grid grid-cols-4 gap-4 items-center">
+            <div>True Threshold</div>
+            <valueViewer />
+            <valueViewer />
+            <valueViewer />
+        </div>
+        <div class="grid grid-cols-4 gap-4 items-center">
+            <div>Correlation Fit</div>
+            <valueViewer />
+            <valueViewer />
+            <valueViewer />
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import valueViewer from '../../../../../assets/vueComponents/inputs/valueViewer.vue';
+</script>

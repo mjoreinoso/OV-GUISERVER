@@ -13,7 +13,8 @@ export const menuTree = {
           algorithm: { label: 'Algorithm' },
           strobeSetup: { label: 'Strobe Setup' },
           vr: { label: 'Vertical Registration'},
-          hr: { label: 'Horizontal Registration'}
+          hr: { label: 'Horizontal Registration'},
+          windowSetup: { label: 'Window Setup' }
         }
       },
       rld: {

@@ -9,7 +9,7 @@ const { RF, Average, LastRjtdRFArray } = storeToRefs(rfStore);
 </script>
 
 <template>
-   <div class="grid gap-x-2 grow text-white text-[0.95vw] p-3 border-2 rounded-xl w-[45%]"
+   <div class="grid gap-x-2 grow text-white text-[0.95vw] p-2.5 border-2 rounded-xl w-[45%]"
     style="grid-template-columns: minmax(5vw, 8vw) repeat(3, minmax(0, 10vw));">
     <div></div>
     <div class="font-bold text-center">RF</div>

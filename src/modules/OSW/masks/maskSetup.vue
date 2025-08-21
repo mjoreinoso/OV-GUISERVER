@@ -1,15 +1,16 @@
 <template>
   <div class="flex flex-row justify-between w-full h-full space-x-3">
     <div class="flex flex-col justify-between h-full w-[35%]">
+      <div class="flex items-center justify-between">
+        <div class="font-semibold text-[0.95vw]">Mask Region Outline Display</div>
+        <toggle v-model="maskStore.mask_display" />
+      </div>
       <topDiagonalMask />
       <bottomDiagonalMask />
       <spotMasking />
     </div>
     <div class="w-[65%] h-full flex-col flex items-end space-y-3">
-      <div class="flex items-center space-x-3">
-        <div class="font-semibold text-[0.95vw]">Mask Region Outline Display</div>
-        <toggle v-model="maskStore.mask_display" />
-      </div>
+
       <LiveFeed :enabledItems="{
         bottle: true,
         resolution: false,

@@ -1,5 +1,5 @@
 <template>
-    <div class="border-2 p-3 rounded-xl text-[0.95vw] grid grid-cols-2 gap-4">
+    <div class="border-2 p-2.5 rounded-xl text-[0.95vw] grid grid-cols-2 gap-4">
         <div class="flex justify-between items-center">
             <span class="w-[5vw]">X</span>
             <numberInput v-model="imageStore.x_image" />

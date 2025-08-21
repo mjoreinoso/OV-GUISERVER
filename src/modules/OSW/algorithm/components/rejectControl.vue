@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3 text-[0.95vw] grid grid-cols-2 gap-4 rounded-xl border-2 w-[40%]">
+    <div class="p-2.5 text-[0.95vw] grid grid-cols-2 gap-4 rounded-xl border-2 w-[40%]">
         <div class="flex space-x-3 justify-between items-center">
             <div>Reject Type</div>
             <titleSelects :value="algorithmStore.rejection_type" :options="rejectTypeOptions"

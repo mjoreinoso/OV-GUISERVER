@@ -1,20 +1,19 @@
 <template>
-    <div class="flex flex-col w-full h-full space-x-3">
+    <div class="flex flex-row w-full h-full space-x-2.5">
         <!-- Parte superior -->
-        <div class="flex flex-col w-[100%] space-x-3 mb-2">
-            <!-- Ocupa 30% -->
-            <div>
-                <HorizontalRegistrarion />
-            </div>
+        <div class="flex flex-col w-[40%] h-full space-y-2.5">
+            <RegistrationDisplay />
+            <RejectControl />
         </div>
-        <div class="flex flex-row items-stretch w-full gap-2">
+
+        <div class="flex flex-col items-stretch w-[60%] gap-2.5">
             <!-- Columna izquierda -->
-            <div class="flex-[4] h-full">
-                <RejectControl />
+            <div class="">
+                <HorizontalRegistrarion />
             </div>
 
             <!-- Columna derecha -->
-            <div class="flex-[6] h-full">
+            <div class="h-full">
                 <LiveFeed bottleType="OSW" :enabledItems="{
                     bottle: true,
                     resolution: false,
@@ -35,11 +34,12 @@ import { useAlgorithmStore } from './store/algorithmStore';
 import { onMounted } from 'vue';
 import RejectControl from "./components/rejectControl.vue";
 import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
+import RegistrationDisplay from "./components/registrationDisplay.vue";
 
 const algorithmStore = useAlgorithmStore();
 
 onMounted(() => {
-  algorithmStore.fetchAlgorithmConfig(0, 0);
+    algorithmStore.fetchAlgorithmConfig(0, 0);
 });
 
 

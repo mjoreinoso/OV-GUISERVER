@@ -89,5 +89,13 @@ export const useSocketStore = defineStore("socketStore", {
         console.error("❌ Cannot emit, socket not connected");
       }
     },
+
+    windowDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("OSWWindowSetupData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
+    }
   },
 });

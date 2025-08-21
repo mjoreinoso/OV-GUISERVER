@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row text-[1.8vw] h-[10mm]">
+  <div class="flex flex-row text-[1.8vw] h-[9mm]">
     <!-- Botón de decremento -->
     <div
-      class="bg-secondary  w-[2.1vw] rounded-l-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
+      class="bg-secondary text-[1.2vw] w-[2vw] rounded-l-lg text-white flex items-center justify-center cursor-pointer font-bold select-none"
       @mousedown="startDecrement" @mouseup="stopAction" @mouseleave="stopAction" @touchstart.prevent="startDecrement"
       @touchend="stopAction" :class="{ 'opacity-50 cursor-not-allowed': disabled }">
       <span>-</span>
@@ -20,7 +20,7 @@
 
 
     <!-- Botón de incremento -->
-    <div class="bg-secondary w-[2.1vw] rounded-r-lg text-white flex items-center justify-center font-bold select-none"
+    <div class="bg-secondary text-[1.2vw] w-[2vw] rounded-r-lg text-white flex items-center justify-center font-bold select-none"
       :class="{
         'opacity-50 cursor-not-allowed': props.disabled || props.readonlyIncrementLock,
         'cursor-pointer': !props.disabled && !props.readonlyIncrementLock

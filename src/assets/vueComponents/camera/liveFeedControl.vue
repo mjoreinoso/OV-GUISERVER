@@ -1,35 +1,35 @@
 <template>
   <div class="flex items-center justify-center space-x-3 rounded-xl">
-    <div v-if="enabledItems.bottle" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+    <div v-if="enabledItems.bottle" class="flex items-center justify-center w-[3.5vw] h-[3.5vw] bg-secondary rounded-xl">
       <img :src="bottleIcon" class="scale-75" alt="Bottle Icon" />
     </div>
 
-    <div v-if="enabledItems.resolution" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+    <div v-if="enabledItems.resolution" class="flex items-center justify-center w-[3.5vw] h-[3.5vw] bg-secondary rounded-xl">
       <img :src="resolutionIcon" class="scale-75" alt="Resolution Icon" />
     </div>
 
     <div
       v-if="enabledItems.groupBottle"
-      class="flex flex-col items-center justify-center w-16 h-16 cursor-pointer bg-secondary rounded-xl"
+      class="flex flex-col items-center justify-center w-[3.5vw] h-[3.5vw] cursor-pointer bg-secondary rounded-xl"
       @click="updateBottleCount"
     >
       <img :src="bottleImage" class="transition duration-300 scale-90" alt="Bottle Icon" />
       <span class="font-semibold ">{{ displayBottleCount }}</span>
     </div>
 
-    <div v-if="enabledItems.freeze" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+    <div v-if="enabledItems.freeze" class="flex items-center justify-center w-[3.5vw] h-[3.5vw] bg-secondary rounded-xl">
       <img :src="freezeIcon" class="scale-75" alt="Freeze Icon" />
     </div>
 
     <div
       v-if="enabledItems.seconds"
-      class="w-16 h-16 font-semibold text-[1.6vw] bg-secondary rounded-xl flex items-center justify-center cursor-pointer"
+      class="w-[3.5vw] h-[3.5vw] font-semibold text-[1.6vw] bg-secondary rounded-xl flex items-center justify-center cursor-pointer"
       @click="updateSeconds"
     >
       {{ seconds }}
     </div>
 
-    <div v-if="enabledItems.save" class="flex items-center justify-center w-16 h-16 bg-secondary rounded-xl">
+    <div v-if="enabledItems.save" class="flex items-center justify-center w-[3.5vw] h-[3.5vw] bg-secondary rounded-xl">
       <img :src="saveIcon" class="scale-75" alt="Save Icon" />
     </div>
   </div>

@@ -1,11 +1,11 @@
 <template>
     <div
-      class="grid grid-cols-[1.2vw_0.5fr_0.5fr] text-[0.9vw] items-center gap-2 p-2 border-2 rounded-xl grow"
+      class="grid grid-cols-[1.2vw_0.5fr_0.5fr] text-[0.9vw] items-center gap-2 grow"
     >
       <!-- Encabezados -->
-      <div class="text-center text-[1.2vw] font-bold leading-3">P3</div>
-      <div class="text-center text-[0.95vw] font-semibold leading-3">Current Detects</div>
-      <div class="text-center text-[0.95vw] font-semibold leading-3">Last Reject Detects</div>
+      <div class="text-center text-[1.2vw] font-bold leading-4.5">P3</div>
+      <div class="text-center text-[0.95vw] font-semibold leading-4.5">Current Detects</div>
+      <div class="text-center text-[0.95vw] font-semibold leading-4.5">Last Reject Detects</div>
 
       <!-- View 1 -->
       <div class="text-[0.95vw] font-medium whitespace-nowrap">V1</div>

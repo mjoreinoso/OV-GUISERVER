@@ -11,21 +11,23 @@
         <div class="flex flex-row h-full space-x-3">
             <div class="w-[45%] border-2 rounded-xl grow flex flex-col justify-around">
                 <hardwareConfig />
-                <div class="text-[1.1vw] flex flex-col space-y-2 p-3 border-t-2">
+                <div class="text-[1.1vw] flex flex-col space-y-2 p-2.5 border-t-2">
                     <div class="flex items-center justify-center w-full font-bold"> Average Light</div>
-                    <phase1/>
-                    <phase2/>
-                    <phase3/>
+                    <phase1 />
+                    <phase2 />
+                    <phase3 />
                 </div>
             </div>
-            <LiveFeed :enabledItems="{
-                bottle: true,
-                resolution: false,
-                groupBottle: true,
-                freeze: true,
-                seconds: true,
-                save: true
-            }" bottleType="OSW" />
+            <div class="w-[55%]">
+                <LiveFeed :enabledItems="{
+                    bottle: true,
+                    resolution: false,
+                    groupBottle: true,
+                    freeze: true,
+                    seconds: true,
+                    save: true
+                }" bottleType="OSW" />
+            </div>
         </div>
     </div>
 </template>
@@ -49,16 +51,16 @@ const socketStore = useSocketStore();
 
 // Detectar cambios en cualquier estado del imageStore
 imageStore.$subscribe((mutation) => {
-  console.log('Cambio detectado en imageStore:', {
-    type: mutation.type,
-    storeId: mutation.storeId,
-    events: mutation.events
-  });
-  
-  // Obtener el payload del store y enviarlo por socket
-  const payload = imageStore.getImageDataPayload();
-  socketStore.imageDataEmit(payload);
-  console.log('Datos de imagen enviados por socket:', payload);
+    console.log('Cambio detectado en imageStore:', {
+        type: mutation.type,
+        storeId: mutation.storeId,
+        events: mutation.events
+    });
+
+    // Obtener el payload del store y enviarlo por socket
+    const payload = imageStore.getImageDataPayload();
+    socketStore.imageDataEmit(payload);
+    console.log('Datos de imagen enviados por socket:', payload);
 });
 
 onMounted(() => {

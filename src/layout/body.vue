@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary h-full w-full rounded-b-xl p-2.5">
+  <div class="bg-primary h-full w-full rounded-b-xl p-2.5 ">
     <component :is="currentComponent" v-if="currentComponent" />
     <div v-else class="mt-10 text-xl text-center text-white">Select a screen from the sidebar</div>
   </div>
@@ -9,7 +9,7 @@
 import { computed } from 'vue'
 import { useSidebarStore } from './sidebar/store/sidebarStore'
 import type { Component } from 'vue'
-
+import windowSetup from '../modules/OSW/windowSetup/windowSetup.vue'
 import IR_RLD from '@/modules/RLD/components/IR_RLD/IR_RLD.vue'
 import StrobeSetup from '../modules/OSW/strobeSetup/strobeSetup.vue'
 import maskSetup from '../modules/OSW/masks/maskSetup.vue'
@@ -28,7 +28,8 @@ const screenMap: Record<string, Component> = {
   algorithm: algorithmSetup,
   rf: RF_RLD,
   vr: Vertical_R,
-  hr: Horizontal_R
+  hr: Horizontal_R,
+  windowSetup: windowSetup
 }
 
 const currentComponent = computed(() => screenMap[sidebarStore.currentScreen] || null)

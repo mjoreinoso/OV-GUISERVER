@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3  grow flex flex-col rounded-xl border-2 justify-center space-y-3 grow">
+    <div class="p-2.5 grow flex flex-col rounded-xl border-2 justify-center space-y-3 grow">
         <div class="font-bold text-[0.95vw]">Detect Filter</div>
 
         <div class="text-[0.95vw] space-y-2">

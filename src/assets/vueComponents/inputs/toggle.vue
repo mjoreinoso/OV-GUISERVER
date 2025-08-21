@@ -1,10 +1,10 @@
 <template>
     <div>
         <div @click="toggle" role="switch" :aria-checked="isActive"
-            class="relative flex items-center h-10 w-20 rounded-xl cursor-pointer select-none transition-colors duration-300 ease-in-out shadow-md"
+            class="relative flex items-center h-[9mm] w-[18mm] rounded-xl cursor-pointer select-none transition-colors duration-300 ease-in-out shadow-md"
             :class="isActive ? 'bg-green-600' : 'bg-red-600'">
             <!-- Toggle slider -->
-            <div class="absolute z-10 h-10 w-10 bg-white rounded-xl flex items-center justify-center shadow transition-transform duration-300 ease-in-out will-change-transform border-4"
+            <div class="absolute z-10 h-[9mm] w-[9mm] bg-white rounded-xl flex items-center justify-center shadow transition-transform duration-300 ease-in-out will-change-transform border-4"
                 :class="isActive
                     ? 'translate-x-full border-green-600'
                     : 'translate-x-0 border-red-600'">

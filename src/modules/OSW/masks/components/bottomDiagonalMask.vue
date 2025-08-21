@@ -1,6 +1,6 @@
 <template>
     <div class="space-y-1">
-        <div class="border-2 p-3 rounded-xl flex flex-col text-[0.95vw] space-y-2">
+        <div class="border-2 p-2.5 rounded-xl flex flex-col text-[0.95vw] space-y-2">
             <div class="text-[1.1vw] font-bold">Bottom Diagonal Mask</div>
             <div class="flex items-center space-x-2 justify-between">
                 Enable

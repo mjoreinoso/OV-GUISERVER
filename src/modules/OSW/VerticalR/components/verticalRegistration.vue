@@ -1,10 +1,8 @@
 <template>
-  <div class="flex h-full">
+  <div class="flex h-full text-[0.95vw]">
     <!-- Contenedor de tu card -->
-    <div class="flex flex-col justify-center p-3 border-2 grow rounded-xl">
-      <div class="font-bold text-[0.95vw] pb-6">Registration Window Outline Display</div>
-      
-      <div class="text-[0.95vw] grid grid-cols-2 gap-6">
+    <div class="flex flex-col justify-center p-2.5 border-2 grow rounded-xl">
+      <div class="text-[0.95vw] grid grid-cols-2 gap-2.5">
         <div class="flex items-center justify-between space-y-2">
           <span class="w-[9vw]">Vertical Position</span>
           <numberInput 
