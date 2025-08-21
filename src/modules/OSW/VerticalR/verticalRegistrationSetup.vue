@@ -29,17 +29,27 @@
 
 <script setup lang="ts">
 import VerticalRegistrarion from "./components/verticalRegistration.vue";
-import { useAlgorithmStore } from './store/algorithmStore';
+import { useVerticalStore } from "./store/verticalStore";
 import { onMounted } from 'vue';
 import RejectControl from "./components/rejectControl.vue";
 import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 import RegistrationDisplay from "./components/registrationDisplay.vue";
 
-const algorithmStore = useAlgorithmStore();
+const verticalStore = useVerticalStore();
 
 onMounted(() => {
-    algorithmStore.fetchAlgorithmConfig(0, 0);
+    verticalStore.fetchVerticalRegistration();
 });
 
+verticalStore.$subscribe((mutation) => {
+    console.log('Cambio detectado en verticalStore:', {
+        type: mutation.type,
+        storeId: mutation.storeId,
+        events: mutation.events
+    });
 
+    // Obtener el payload del store y enviarlo por socket
+    verticalStore.emitVerticalConfig();
+    console.log('Datos de verticalStore enviados por socket:', verticalStore.getVerticalDataPayload());
+});
 </script>

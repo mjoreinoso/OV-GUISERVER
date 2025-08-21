@@ -39,4 +39,5 @@ const windowStore = useWindowStore();
 onMounted(() => {
     windowStore.fetchWindowSetup(0);
 });
+
 </script>
