@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import VerticalRegistrarion from "./components/verticalRegistration.vue";
-import { useAlgorithmStore } from './store/algorithmStore';
+import { useAlgorithmStore } from './store/verticalStore';
 import { onMounted } from 'vue';
 import RejectControl from "./components/rejectControl.vue";
 import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";

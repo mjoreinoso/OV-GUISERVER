@@ -29,6 +29,10 @@ export const useAlgorithmStore = defineStore("algorithm", {
     rejection_type: 0,
     id: null,
     isSyncing: false,
+    vertical_position_v: 0,
+    window_height_v: 0, 
+    windowWidth: 0,
+    fitThreshold: 0,
   }),
 
   actions: {
@@ -100,5 +104,54 @@ export const useAlgorithmStore = defineStore("algorithm", {
       const payload = [this.getAlgorithmPayload()];
       socketStore.algorithmDataEmit(payload);
     },
+  },
+});
+
+
+//esto fue lo que cambie
+// Interfaz para tipar los objetos en rfData
+export type OSWVerticalRegistration = {
+    registration_v_display: boolean;
+    vertical_position_v: number;
+    window_height_v: number;
+    window_width: number;
+    fit_threshold_v: number;
+    supress_reject_v: boolean;
+
+}
+
+export const OSWVerticalRegistration  = defineStore("horizontalR", {
+  state: () => ({
+    horizontalR: [] as OSWVerticalRegistration[],
+    isLoading: false,
+  }),
+
+  actions: {
+    async fetchHorizontalR() {
+      this.isLoading = true;
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:5000/inspection/osw/image?screen_id=1"
+        );
+        // Si la respuesta es un objeto único, lo convertimos en array
+        if (response.data && !Array.isArray(response.data)) {
+          this.horizontalR = [response.data];
+        } else {
+          this.horizontalR = response.data;
+        }
+        console.log("Horizontal Registration fetched successfully:", this.horizontalR);
+      } catch (error) {
+        console.error("Error fetching Horizontal Registration:", error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    updateLiveHorizontalRResults(payload: OSWVerticalRegistration) {
+  this.horizontalR = [payload]; 
+  // 👆 lo guardamos como array de 1 elemento (siguiendo tu fetch inicial)
+  // Si prefieres solo 1 objeto, podrías usar: this.horizontalR[0] = payload;
+  console.log("📩 Live Horizontal Registration data:", this.horizontalR);
+},
   },
 });

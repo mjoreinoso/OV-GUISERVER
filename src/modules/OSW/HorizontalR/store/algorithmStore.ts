@@ -31,6 +31,8 @@ export const useAlgorithmStore = defineStore("algorithm", {
     isSyncing: false,
   }),
 
+  
+
   actions: {
     async fetchAlgorithmConfig(window_id: number, algorithm_id: number) {
       try {
@@ -100,5 +102,57 @@ export const useAlgorithmStore = defineStore("algorithm", {
       const payload = [this.getAlgorithmPayload()];
       socketStore.horizontalREmit(payload);
     },
+  },
+});
+
+//esto fue lo que cambie
+//bueno mi intento :smile_paint:
+export interface OSWHorizontalRegistration {
+  registration_h_display: boolean;
+  vertical_position_h: number;
+  window_height_h: number;
+  neck_width: number;
+  dynamic_tracking: boolean;
+  fit_threshold_h: number;
+  supress_reject_h: boolean;
+  phase_1: number;
+  phase_2: number;
+  phase_3: number;
+  bottle_images: number;
+}
+
+export const OSWHorizontalRegistration  = defineStore("horizontalR", {
+  state: () => ({
+    horizontalR: [] as OSWHorizontalRegistration[],
+    isLoading: false,
+  }),
+
+  actions: {
+    async fetchHorizontalR() {
+      this.isLoading = true;
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:5000/inspection/osw/image?screen_id=2"
+        );
+        // Si la respuesta es un objeto único, lo convertimos en array
+        if (response.data && !Array.isArray(response.data)) {
+          this.horizontalR = [response.data];
+        } else {
+          this.horizontalR = response.data;
+        }
+        console.log("Horizontal Registration fetched successfully:", this.horizontalR);
+      } catch (error) {
+        console.error("Error fetching Horizontal Registration:", error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    updateLiveHorizontalRResults(payload: OSWHorizontalRegistration) {
+  this.horizontalR = [payload]; 
+  // 👆 lo guardamos como array de 1 elemento (siguiendo tu fetch inicial)
+  // Si prefieres solo 1 objeto, podrías usar: this.horizontalR[0] = payload;
+  console.log("📩 Live Horizontal Registration data:", this.horizontalR);
+},
   },
 });
