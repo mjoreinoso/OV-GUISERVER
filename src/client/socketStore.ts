@@ -92,7 +92,7 @@ export const useSocketStore = defineStore("socketStore", {
 
     verticalDataEmit(data: any) {
       if (this.isConnected) {
-        this.socket.emit("OSWVerticalData", data);
+        this.socket.emit("OSWVerticalRegistration", data);
       } else {
         console.error("❌ Cannot emit, socket not connected");
       }
@@ -100,7 +100,7 @@ export const useSocketStore = defineStore("socketStore", {
 
     horizontalDataEmit(data: any) {
       if (this.isConnected) {
-        this.socket.emit("OSWHorizontalData", data);
+        this.socket.emit("OSWHorizontalRegistration", data);
       } else {
         console.error("❌ Cannot emit, socket not connected");
       }

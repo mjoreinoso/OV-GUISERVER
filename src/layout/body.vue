@@ -16,8 +16,8 @@ import maskSetup from '../modules/OSW/masks/maskSetup.vue'
 import imageSetup from '../modules/OSW/image/imageSetup.vue'
 import algorithmSetup from '../modules/OSW/algorithm/algorithmSetup.vue'
 import RF_RLD from '@/modules/RLD/components/RF_RLD/RF_RLD.vue'
-import Vertical_R  from '../modules/OSW/VerticalR/algorithmSetup.vue'
-import Horizontal_R from '../modules/OSW/HorizontalR/algorithmSetup.vue'
+import Vertical_R  from '../modules/OSW/VerticalR/verticalRegistrationSetup.vue'
+import Horizontal_R from '../modules/OSW/HorizontalR/horizontalRegistrationSetup.vue'
 const sidebarStore = useSidebarStore()
 
 const screenMap: Record<string, Component> = {

@@ -6,29 +6,25 @@
         <div class="flex items-center justify-between space-y-2">
           <span class="w-[9vw]">Vertical Position</span>
           <numberInput 
-            v-model="algorithmStore.bck_sensitivity" 
-            @update:model-value="algorithmStore.emitAlgorithmConfig()" 
+            v-model="verticalStore.vertical_position_v" 
           />
         </div>
         <div class="flex items-center justify-between space-y-2">
           <span class="w-[9vw]">Window Height</span>
           <numberInput 
-            v-model="algorithmStore.bck_kernel_width" 
-            @update:model-value="algorithmStore.emitAlgorithmConfig()" 
+            v-model="verticalStore.window_height_v" 
           />
         </div>
         <div class="flex items-center justify-between space-y-2">
           <span class="w-[9vw]">Window Width</span>
           <numberInput 
-            v-model="algorithmStore.bck_kernel_height" 
-            @update:model-value="algorithmStore.emitAlgorithmConfig()" 
+            v-model="verticalStore.window_width" 
           />
         </div>
         <div class="flex items-center justify-between space-y-2">
           <span class="w-[9vw]">Fit Threshold</span>
           <numberInput 
-            v-model="algorithmStore.bck_kernel_offset" 
-            @update:model-value="algorithmStore.emitAlgorithmConfig()" 
+            v-model="verticalStore.fit_threshold_v" 
           />
         </div>
       </div>
@@ -38,7 +34,7 @@
 
 <script setup lang="ts">
 import numberInput from '../../../../assets/vueComponents/inputs/numberInput.vue';
-import { useAlgorithmStore } from '../store/algorithmStore';
+import { useVerticalStore } from '../store/verticalStore';
 
-const algorithmStore = useAlgorithmStore();
+const verticalStore = useVerticalStore();
 </script>

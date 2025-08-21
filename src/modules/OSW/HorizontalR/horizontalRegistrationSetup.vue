@@ -30,17 +30,28 @@
 
 <script setup lang="ts">
 import HorizontalRegistrarion from "./components/horizontalRegistration.vue";
-import { useAlgorithmStore } from './store/algorithmStore';
+import { useHorizontalStore } from './store/horizontalStore';
 import { onMounted } from 'vue';
 import RejectControl from "./components/rejectControl.vue";
 import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 import RegistrationDisplay from "./components/registrationDisplay.vue";
 
-const algorithmStore = useAlgorithmStore();
+const horizontalStore = useHorizontalStore();
 
 onMounted(() => {
-    algorithmStore.fetchAlgorithmConfig(0, 0);
+    horizontalStore.fetchHorizontalRegistration();
 });
 
+horizontalStore.$subscribe((mutation) => {
+    console.log('Cambio detectado en horizontalStore:', {
+        type: mutation.type,
+        storeId: mutation.storeId,
+        events: mutation.events
+    });
+
+    // Obtener el payload del store y enviarlo por socket
+    horizontalStore.emitHorizontalConfig();
+    console.log('Datos de horizontalStore enviados por socket:', horizontalStore.getHorizontalDataPayload());
+});
 
 </script>
