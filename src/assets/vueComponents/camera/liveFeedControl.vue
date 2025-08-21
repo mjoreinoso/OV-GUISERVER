@@ -45,10 +45,10 @@ import bottleIconOSW from '../../screenIcons/liveFeedIcons/OSW.svg';
 import resolutionIcon from '../../screenIcons/liveFeedIcons/resolution.svg';
 import saveIcon from '../../screenIcons/liveFeedIcons/save.svg';
 import freezeIcon from '../../screenIcons/liveFeedIcons/freeze.svg';
-import GroupBottle1 from '../../screenIcons/liveFeedIcons/groupBottle1_fr.svg';
-import GroupBottle2 from '../../screenIcons/liveFeedIcons/groupBottle2_fr.svg';
-import GroupBottle3 from '../../screenIcons/liveFeedIcons/groupBottle3_fr.svg';
-import GroupBottle4 from '../../screenIcons/liveFeedIcons/groupBottle4_fr.svg';
+import GroupBottle1 from '../../screenIcons/liveFeedIcons/GroupBottle1_fr.svg';
+import GroupBottle2 from '../../screenIcons/liveFeedIcons/GroupBottle2_fr.svg';
+import GroupBottle3 from '../../screenIcons/liveFeedIcons/GroupBottle3_fr.svg';
+import GroupBottle4 from '../../screenIcons/liveFeedIcons/GroupBottle4_fr.svg';
 
 const seconds = ref(0);
 const bottleCount = ref(1);
