@@ -1,5 +1,5 @@
 <template>
-        <div class="flex flex-col border-2 p-3 rounded-xl text-[0.95vw] justify-between">
+        <div class="flex flex-col border-2 p-2.5 rounded-xl text-[0.95vw] justify-between">
             <div class="flex justify-between items-center space-x-3">
                 <span >Outline</span>
                 <Toggle v-model="imageStore.outline_display" />

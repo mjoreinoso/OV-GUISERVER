@@ -1,21 +1,20 @@
 <template>
-    <div class="flex flex-row w-full h-full space-x-3">
-        <div class="w-[18%] flex flex-col space-y-3">
+    <div class="flex flex-row w-full h-full space-x-2.5">
+        <div class="w-[18%] flex flex-col space-y-2.5 p-2 border-2 rounded-xl">
             <phase1 />
             <phase2 />
             <phase3 />
 
         </div>
-        <div class="flex flex-col w-[82%] space-y-3">
-            <div class="flex flex-row space-x-3">
+        <div class="flex flex-col w-[82%] space-y-2.5">
+            <div class="flex flex-row space-x-2.5">
                 <temporaryRejects class="w-[18%]" />
                 <windowControl />
                 <rejectControl />
-
             </div>
-            <div class="flex flex-row justify-between w-full gap-x-3 grow">
-                <div class="flex flex-col items-center justify-center border-2 rounded-xl w-[60%]">
-                    <LiveFeed :enabledItems="{
+            <div class="flex flex-row justify-between w-full gap-x-2.5 grow">
+                <div class="flex flex-col items-center justify-centerl w-[60%]">
+                    <LiveFeed bottleType="OSW" :enabledItems="{
                         bottle: true,
                         resolution: false,
                         groupBottle: true,
@@ -24,7 +23,7 @@
                         save: true
                     }" />
                 </div>
-                <div class="w-[40%] flex flex-col space-y-3 grow">
+                <div class="w-[40%] flex flex-col space-y-2.5 grow">
                     <gradientDetectorSetup />
                     <backgroundNormalization />
                     <detectFilter />
@@ -46,7 +45,7 @@ import phase3 from "./components/viewRejects/phase3.vue";
 import temporaryRejects from "./components/temporaryRejects.vue";
 import { useAlgorithmStore } from './store/algorithmStore';
 import { onMounted } from 'vue';
-import LiveFeed from "../masks/components/camera/liveFeed.vue";
+import LiveFeed from "@/assets/vueComponents/camera/liveFeed.vue";
 
 const algorithmStore = useAlgorithmStore();
 

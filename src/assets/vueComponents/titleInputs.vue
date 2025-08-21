@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-row grow justify-between items-center p-2">
-    <div class="text-[0.85vw]">{{ title }}</div>
+  <div class="flex flex-row grow justify-between items-center">
+    <div class="text-[0.95vw]">{{ title }}</div>
     <div>
       <numberInput
         v-model="inputValue"

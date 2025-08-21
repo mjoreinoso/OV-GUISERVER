@@ -1,9 +1,10 @@
 <template>
-    <div class="flex flex-col grow p-3  rounded-xl border-2 justify-center grow">
+    <div class="flex flex-col grow p-2.5  rounded-xl border-2 justify-center grow">
         <div class="font-bold text-[0.95vw] pb-2">Background Normalization</div>
-        <div class=" text-[0.85vw] grid grid-cols-2 gap-4 ">
-            <div class="flex justify-between items-center col-span-2">
-                <titleSelects :title="'Source'" :value="algorithmStore.bck_source" :options="backgroundSourceOptions"
+        <div class=" text-[0.95vw] grid grid-cols-2 gap-2 ">
+            <div class="flex space-x-3 justify-between items-center col-span-2">
+                <div>Source</div>
+                <titleSelects :value="algorithmStore.bck_source" :options="backgroundSourceOptions"
                     @update:value="val => { algorithmStore.bck_source = val; algorithmStore.emitAlgorithmConfig(); }" />
             </div>
             <div class="flex justify-between items-center">

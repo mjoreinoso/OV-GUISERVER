@@ -1,14 +1,16 @@
 <template>
-    <div class="flex flex-col p-3  rounded-xl border-2 justify-center grow">
+    <div class="flex flex-col p-2.5  rounded-xl border-2 justify-center grow">
         <div class="font-bold text-[0.95vw] pb-2">Gradient Detector Setup</div>
 
-        <div class=" text-[0.85vw] grid grid-cols-2 gap-4 ">
-            <div class="flex justify-between items-center">
-                <titleSelects :title="'Source'" :value="algorithmStore.grd_source" :options="gradientSourceOptions"
+        <div class=" text-[0.95vw] grid grid-cols-2 gap-2">
+            <div class="flex space-x-3 justify-between items-center">
+                <div>Source</div>
+                <titleSelects :value="algorithmStore.grd_source" :options="gradientSourceOptions"
                     @update:value="val => { algorithmStore.grd_source = val; algorithmStore.emitAlgorithmConfig(); }" />
             </div>
-            <div class="flex justify-between items-center">
-                <titleSelects :title="'Type'" :value="algorithmStore.grd_type" :options="gradientTypeOptions"
+            <div class="flex space-x-3 justify-between items-center">
+                <div>Type</div>
+                <titleSelects :value="algorithmStore.grd_type" :options="gradientTypeOptions"
                     @update:value="val => { algorithmStore.grd_type = val; algorithmStore.emitAlgorithmConfig(); }" />
             </div>
             <div class="flex justify-between items-center">

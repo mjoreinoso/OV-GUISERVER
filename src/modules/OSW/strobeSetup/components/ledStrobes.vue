@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col space-y-4 text-white border-2 rounded-xl p-3 text-[0.95vw]">
+    <div class="flex flex-col space-y-4 text-white border-2 rounded-xl p-2.5 text-[0.95vw]">
         <!-- Global Brightness -->
         <div class="flex items-center space-x-3 justify-between border-b-2 pb-2 text-[1.4vw]">
             <label for="global_brightness">Global Brightness:</label>

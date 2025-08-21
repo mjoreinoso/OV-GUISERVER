@@ -19,11 +19,11 @@
                 </div>
 
                 <!-- Display del valor -->
-                <div class="flex flex-row items-center justify-between gap-3 pb-4">
-                    <div :class="valueBoxClass">
+                <div class="flex flex-row items-center justify-between gap-2.5 pb-4">
+                    <div  :class="valueBoxClass">
                         {{ displayValue !== "" ? displayValue : "-" }}
                     </div>
-                    <div class="bg-[#14377B] w-24 h-16 rounded-lg flex items-center justify-center active:bg-[#16233e]"
+                    <div class="bg-[#14377B] w-[5vw] h-[5vw] rounded-lg flex items-center justify-center active:bg-[#16233e]"
                         @click="onBackspace">
                         <img :src="backspace" alt="Backspace" class="w-24" />
                     </div>
@@ -34,26 +34,26 @@
                     <!-- Numpad -->
                     <div class="grid grid-cols-3 gap-4 flex-grow">
                         <div v-for="key in keys" :key="key" @click="onKey(key)"
-                            class="bg-[#14377B] rounded-lg w-24 h-24 flex items-center justify-center text-4xl font-bold active:bg-[#16233e] cursor-pointer">
+                            class="bg-[#14377B] rounded-lg w-[5vw] h-[5vw] flex items-center justify-center text-4xl font-bold active:bg-[#16233e] cursor-pointer">
                             {{ key }}
                         </div>
                     </div>
 
                     <!-- Flechas -->
                     <div class="flex flex-col justify-between">
-                        <div class="bg-[#14377B] w-24 h-24 rounded-lg flex items-center justify-center active:bg-[#16233e]"
+                        <div class="bg-[#14377B] w-[5vw] h-[5vw] rounded-lg flex items-center justify-center active:bg-[#16233e]"
                             @click="increment">
                             <img :src="arrow" alt="Up" class="w-8 h-8 rotate-180" />
                         </div>
-                        <div class="bg-[#14377B] w-24 h-24 rounded-lg flex items-center justify-center active:bg-[#16233e]"
+                        <div class="bg-[#14377B] w-[5vw] h-[5vw] rounded-lg flex items-center justify-center active:bg-[#16233e]"
                             @click="decrement">
                             <img :src="arrow" alt="Down" class="w-8 h-8" />
                         </div>
-                        <div class="bg-[#14377B] w-24 h-24 rounded-lg flex items-center justify-center active:bg-[#16233e]"
+                        <div class="bg-[#14377B] w-[5vw] h-[5vw] rounded-lg flex items-center justify-center active:bg-[#16233e]"
                             @click="cancel">
                             <img :src="returnIcon" alt="Cancel" class="w-10 h-10" />
                         </div>
-                        <div class="bg-[#14377B] w-24 h-24 rounded-lg flex items-center justify-center active:bg-[#16233e]"
+                        <div class="bg-[#14377B] w-[5vw] h-[5vw] rounded-lg flex items-center justify-center active:bg-[#16233e]"
                             @click="confirm">
                             <img :src="enter" alt="Enter" class="w-8 h-8" />
                         </div>
@@ -115,7 +115,7 @@ const isOutOfRange = computed(() => {
 });
 
 const valueBoxClass = computed(() => [
-    "rounded-lg p-2 text-right text-5xl font-bold flex-grow h-[6vh]",
+    "rounded-lg p-2.5 text-right text-5xl font-bold flex-grow ",
     isOutOfRange.value
         ? "bg-red-700 text-white"
         : "bg-[#171315] bg-opacity-60 text-white",

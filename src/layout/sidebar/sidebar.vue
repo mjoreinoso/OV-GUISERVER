@@ -14,7 +14,7 @@
   <transition name="fade">
     <div
       v-if="sidebarStore.isOpen"
-      class="w-[380px] rounded-r-lg absolute z-30 left-0 top-0 bottom-0 bg-primary h-full p-3 flex flex-col space-y-4 items-center justify-start shadow-lg"
+      class="w-[380px] rounded-r-lg absolute z-30 left-0 top-0 bottom-0 bg-primary h-full p-2.5 flex flex-col space-y-4 items-center justify-start shadow-lg"
     >
       <!-- Logo expandido -->
       <div class="rounded-full h-[80px] w-[300px]" @click="sidebarStore.toggleSidebar">

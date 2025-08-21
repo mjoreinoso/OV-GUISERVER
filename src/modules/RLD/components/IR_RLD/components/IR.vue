@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col p-2 border-2 rounded-xl">
-    <div class="grid grid-cols-2 gap-2">
+  <div class="flex flex-col p-2 border-2 rounded-xl space-y-3">
+    <div class="grid grid-cols-2 space-x-3">
       <titleInputs title="Brightness" placeholder="Enter brightness value" :value="data.brightness"
         @update:value="val => data.brightness = val" :min="0" :max="4" :step="0.1" :precision="1"
         :readonlyIncrementLock="isAnyIrPotAtMax" />
@@ -8,7 +8,7 @@
         @update:value="val => data.sensitivity = val" :min="0" :max="4" :step="0.1" :precision="1"
         :readonlyIncrementLock="isAnyGainAtMax" />
     </div>
-    <div class="grid grid-cols-2 gap-2">
+    <div class="grid grid-cols-2 space-x-3">
       <titleInputs title="Detection Threshold" placeholder="Enter threshold" :value="data.threshold"
         @update:value="val => data.threshold = val" :min="0" :max="1023" />
       <titleSelects title="Reject Type" :value="data.recject_type" :options="rejectTypeOptions"

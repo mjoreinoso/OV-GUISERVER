@@ -11,7 +11,10 @@ export const menuTree = {
           image: { label: 'Image' },
           masks: { label: 'Masks' },
           algorithm: { label: 'Algorithm' },
-          strobeSetup: { label: 'Strobe Setup' }
+          strobeSetup: { label: 'Strobe Setup' },
+          vr: { label: 'Vertical Registration'},
+          hr: { label: 'Horizontal Registration'},
+          windowSetup: { label: 'Window Setup' }
         }
       },
       rld: {

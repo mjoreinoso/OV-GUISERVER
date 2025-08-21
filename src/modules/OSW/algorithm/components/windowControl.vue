@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3 text-[0.85vw] grid grid-cols-2 gap-4 w-[41%] rounded-xl border-2">
+    <div class="p-2.5 text-[0.95vw] grid grid-cols-2 gap-4 w-[41%] rounded-xl border-2">
         <!-- Window ID -->
         <div class="flex justify-between items-center">
             <span class="w-[9vw]">Window</span>
@@ -13,8 +13,9 @@
         </div>
 
         <!-- Inspection Type -->
-        <div class="flex justify-between items-center">
-            <titleSelects :title="'Inspection'" :value="algorithmStore.inspection" :options="inspectionOptions"
+        <div class="flex space-x-3 justify-between items-center">
+            <div>Inspection</div>
+            <titleSelects :value="algorithmStore.inspection" :options="inspectionOptions"
                 @update:value="val => { algorithmStore.inspection = val; algorithmStore.emitAlgorithmConfig(); }" />
         </div>
 

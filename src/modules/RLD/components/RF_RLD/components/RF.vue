@@ -1,13 +1,16 @@
 <template>
-  <div class="flex flex-col p-2 border-2 rounded-xl">
-    <div class="grid grid-cols-3 gap-2">
+  <div class="flex flex-col p-2 border-2 rounded-xl w-[55%]">
+    <div class="grid grid-cols-2 gap-3">
+      <titleInputs title="Inspection Window" placeholder="Enter threshold value" :value="data.threshold"
+        @update:value="val => data.threshold = val" :min="0" :max="255" :step="1" :precision="0" />
       <titleInputs title="Detection Threshold" placeholder="Enter threshold value" :value="data.threshold"
         @update:value="val => data.threshold = val" :min="0" :max="255" :step="1" :precision="0" />
       <titleInputs title="Gain A" placeholder="Enter gain A value" :value="data.gain_a"
         @update:value="val => data.gain_a = val" :min="0" :max="255" :step="1" :precision="0"
         :readonlyIncrementLock="isGainAtMax" />
       <div class="col-span-1 flex items-center">
-        <titleSelects title="Reject Type" :value="data.reject_type" :options="rejectTypeOptions" @update:value="val => data.reject_type = val" />
+        <titleSelects title="Reject Type" :value="data.reject_type" :options="rejectTypeOptions"
+          @update:value="val => data.reject_type = val" />
       </div>
     </div>
   </div>

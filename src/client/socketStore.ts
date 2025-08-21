@@ -89,5 +89,29 @@ export const useSocketStore = defineStore("socketStore", {
         console.error("❌ Cannot emit, socket not connected");
       }
     },
+
+    verticalDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("OSWVerticalData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
+    },
+
+    horizontalDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("OSWHorizontalData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
+    },
+
+    windowDataEmit(data: any) {
+      if (this.isConnected) {
+        this.socket.emit("OSWWindowSetupData", data);
+      } else {
+        console.error("❌ Cannot emit, socket not connected");
+      }
+    }
   },
 });

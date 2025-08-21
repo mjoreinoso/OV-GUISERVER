@@ -1,11 +1,14 @@
 <!-- components/LiveFeed.vue -->
 <template>
-    <div class="flex flex-col w-full h-full">
-        <div class="flex items-center justify-center w-full p-3 grow bg-accent rounded-xl">
+    <div class="flex flex-col w-full h-full space-y-2.5 rounded-xl">
+        <div class="flex items-center justify-center w-full p-2.5 border-2 grow bg-accent rounded-xl">
             <img id="live-img" :src="imageSrc" alt="Live Feed" class="object-contain max-w-full max-h-full rounded-xl" />
         </div>
-        <div class="w-full h-[10%]  bg-accent rounded-xl flex items-center justify-center space-x-3">
-            <liveFeedControl :enabledItems="props.enabledItems" />
+        <div class="w-full p-2.5 bg-accent rounded-xl flex items-center justify-center space-x-3 border-2">
+            <liveFeedControl 
+                :enabledItems="props.enabledItems" 
+                :bottleType="props.bottleType" 
+            />
         </div>
     </div>
 </template>
@@ -16,14 +19,15 @@ import { onMounted, onUnmounted, ref } from "vue";
 
 
 const props = defineProps<{
-  enabledItems: {
-    bottle: boolean;
-    resolution: boolean;
-    groupBottle: boolean;
-    freeze: boolean;
-    seconds: boolean;
-    save: boolean;
-  };
+    enabledItems: {
+        bottle: boolean;
+        resolution: boolean;
+        groupBottle: boolean;
+        freeze: boolean;
+        seconds: boolean;
+        save: boolean;
+    };
+    bottleType?: 'IR' | 'RF' | 'OSW'; // 👈 nueva prop
 }>();
 
 const imageSrc = ref("");
