@@ -14,13 +14,13 @@
                     <div class="font-bold text-start">Scan Start</div>
                 </div>
                 <div class="flex flex-row">
-                    <NumberInput v-model="dummyNumber" />
+                    <NumberInput v-model="horizontalStore.phase_1" />
                 </div>
                 <div class="flex flex-row">
-                    <NumberInput v-model="dummyNumber" />
+                    <NumberInput v-model="horizontalStore.phase_2" />
                 </div>
                 <div class="flex flex-row">
-                    <NumberInput v-model="dummyNumber" />
+                    <NumberInput v-model="horizontalStore.phase_3" />
                 </div>
             </div>
             <div class="flex flex-col space-y-2 justify-between h-full">
@@ -39,10 +39,11 @@
 
 <script setup lang="ts">
 import NumberInput from '../../../../assets/vueComponents/inputs/numberInput.vue';
+import { useHorizontalStore } from '../store/horizontalStore';
 import view1 from './views/view1.vue';
 import view2 from './views/view2.vue';
 import view3 from './views/view3.vue';
 import view4 from './views/view4.vue';
-import { ref } from "vue";
-const dummyNumber = ref(0);
+
+const horizontalStore = useHorizontalStore();
 </script>
