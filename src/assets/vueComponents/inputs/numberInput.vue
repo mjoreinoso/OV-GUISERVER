@@ -85,8 +85,19 @@ function openNumpad() {
   }
 }
 
+
+const dynamicPrecision = computed(() => {
+  // Si el usuario especifica precision, usarlo
+  if (typeof props.precision === 'number' && props.precision >= 0) {
+    return props.precision;
+  }
+  // Si no, modo automático
+  const val = internalValue.value;
+  return Number.isInteger(val) ? 0 : 2;
+});
+
 const formattedValue = computed(() => {
-  return internalValue.value.toFixed(props.precision);
+  return internalValue.value.toFixed(dynamicPrecision.value);
 });
 
 
@@ -113,12 +124,12 @@ function stopAction() {
 }
 function increment() {
   if (props.disabled || props.readonlyIncrementLock) return;
-  internalValue.value = clamp(Number((internalValue.value + props.step).toFixed(props.precision)));
+  internalValue.value = clamp(Number((internalValue.value + props.step).toFixed(dynamicPrecision.value)));
 }
 
 function decrement() {
   if (props.disabled) return;
-  internalValue.value = clamp(Number((internalValue.value - props.step).toFixed(props.precision)));
+  internalValue.value = clamp(Number((internalValue.value - props.step).toFixed(dynamicPrecision.value)));
 }
 
 
