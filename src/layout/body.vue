@@ -18,6 +18,9 @@ import algorithmSetup from '../modules/OSW/algorithm/algorithmSetup.vue'
 import RF_RLD from '@/modules/RLD/components/RF_RLD/RF_RLD.vue'
 import Vertical_R  from '../modules/OSW/VerticalR/verticalRegistrationSetup.vue'
 import Horizontal_R from '../modules/OSW/HorizontalR/horizontalRegistrationSetup.vue'
+import baseSetup from '../modules/CONTROL/components/BASE/BASE_CONTROL.vue'
+import finishSetup from '../modules/CONTROL/components/FINISH/FN_CONTROL.vue'
+
 const sidebarStore = useSidebarStore()
 
 const screenMap: Record<string, Component> = {
@@ -29,7 +32,9 @@ const screenMap: Record<string, Component> = {
   rf: RF_RLD,
   vr: Vertical_R,
   hr: Horizontal_R,
-  windowSetup: windowSetup
+  windowSetup: windowSetup,
+  bs: baseSetup,
+  fn: finishSetup,
 }
 
 const currentComponent = computed(() => screenMap[sidebarStore.currentScreen] || null)
