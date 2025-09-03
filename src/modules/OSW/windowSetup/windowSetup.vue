@@ -1,17 +1,17 @@
 <template>
     <div class="flex flex-col h-full space-y-2.5">
         <div class="flex flex-row space-x-2.5">
-            <div class="flex flex-row w-[40%] space-x-2.5">
+            <div class="flex flex-row w-[42.5%] space-x-2.5">
                 <InspectionControl />
                 <InspectedDisplay />
             </div>
-            <WindowControl class="w-[60%]" />
+            <WindowControl class="w-[57.5%]" />
         </div>
         <div class="flex flex-row h-full space-x-2.5">
-            <div class="w-[40%] rounded-xl grow flex flex-col space-y-2.5">
+            <div class="w-[42.5%] rounded-xl grow flex flex-col space-y-2.5">
                 <rejectControl />
             </div>
-            <div class="w-[60%]">
+            <div class="w-[57.5%]">
                 <LiveFeed :enabledItems="{
                     bottle: true,
                     resolution: false,
