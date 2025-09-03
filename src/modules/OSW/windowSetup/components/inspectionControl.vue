@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2.5 text-[0.95vw] grid grid-cols-1 gap-2 grow rounded-xl border-2">
+    <div class="p-2.5 w-[65%] text-[0.95vw] grid grid-cols-1 gap-2 grow rounded-xl border-2">
         <!-- Window Type -->
         <div class="flex space-x-3 justify-between items-center">
             <div>Type</div>

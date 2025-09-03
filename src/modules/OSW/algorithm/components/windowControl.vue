@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2.5 text-[0.95vw] grid grid-cols-2 gap-4 w-[41%] rounded-xl border-2">
+    <div class="p-2.5 text-[0.95vw] grid grid-cols-2 gap-4 w-[43%] rounded-xl border-2">
         <!-- Window ID -->
         <div class="flex justify-between items-center">
             <span class="w-[9vw]">Window</span>
@@ -21,12 +21,12 @@
 
         <!-- Algorithm ID Radio Buttons -->
         <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-1">
-                <input type="radio" name="algorithm" :value="0" v-model="algorithmStore.algorithm_id" />
+            <div class="flex items-center space-x-2">
+                <radioToggle :modelValue="algorithmStore.algorithm_id" :value="0" @update:modelValue="algorithmStore.algorithm_id = 0; algorithmStore.emitAlgorithmConfig()" />
                 <span>Alg 1</span>
             </div>
-            <div class="flex items-center space-x-1">
-                <input type="radio" name="algorithm" :value="1" v-model="algorithmStore.algorithm_id" />
+            <div class="flex items-center space-x-2">
+                <radioToggle :modelValue="algorithmStore.algorithm_id" :value="1" @update:modelValue="algorithmStore.algorithm_id = 1; algorithmStore.emitAlgorithmConfig()" />
                 <span>Alg 2</span>
             </div>
         </div>
@@ -40,6 +40,7 @@ import titleSelects from '../../../../assets/vueComponents/titleSelects.vue';
 import { inspectionOptions } from '../store/algorithmSelectOptions';
 import { useAlgorithmStore } from '../store/algorithmStore';
 import { watch, computed } from 'vue';
+import radioToggle from '../../../../assets/vueComponents/inputs/radioToggle.vue';
 
 const algorithmStore = useAlgorithmStore();
 

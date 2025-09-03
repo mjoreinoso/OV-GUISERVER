@@ -1,14 +1,14 @@
 <template>
     <div class="flex flex-row w-full h-full space-x-2.5">
-        <div class="w-[18%] flex flex-col space-y-2.5 p-2 border-2 rounded-xl">
+        <div class="w-[15%] flex flex-col space-y-2.5 p-2 border-2 rounded-xl">
             <phase1 />
             <phase2 />
             <phase3 />
 
         </div>
-        <div class="flex flex-col w-[82%] space-y-2.5">
+        <div class="flex flex-col w-[83%] space-y-2.5">
             <div class="flex flex-row space-x-2.5">
-                <temporaryRejects class="w-[18%]" />
+                <temporaryRejects class="w-[16%]" />
                 <windowControl />
                 <rejectControl />
             </div>
