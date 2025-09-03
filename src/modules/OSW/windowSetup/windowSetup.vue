@@ -1,11 +1,11 @@
 <template>
     <div class="flex flex-col h-full space-y-2.5">
         <div class="flex flex-row space-x-2.5">
-            <WindowControl class="w-[40%]" />
-            <div class="flex flex-row w-[60%] space-x-2.5">
+            <div class="flex flex-row w-[40%] space-x-2.5">
                 <InspectionControl />
                 <InspectedDisplay />
             </div>
+            <WindowControl class="w-[60%]" />
         </div>
         <div class="flex flex-row h-full space-x-2.5">
             <div class="w-[40%] rounded-xl grow flex flex-col space-y-2.5">

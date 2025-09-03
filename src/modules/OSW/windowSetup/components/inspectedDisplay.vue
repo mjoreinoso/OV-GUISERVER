@@ -1,5 +1,5 @@
 <template>
-        <div class="flex flex-col border-2 p-2.5 rounded-xl text-[0.95vw] justify-between">
+        <div class="flex w-[31%] flex-col border-2 p-2.5 rounded-xl text-[0.95vw] justify-between">
             <div class="flex justify-between items-center space-x-3">
                 <span >Inspected</span>
                 <Toggle v-model="windowStore.inspected_enable" @update:model-value="windowStore.emitWindowConfig()"/>
