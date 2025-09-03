@@ -41,6 +41,8 @@ import { ref, computed } from 'vue';
 import bottleIconIR from '../../screenIcons/liveFeedIcons/IR_Residual_Detection.svg';
 import bottleIconRF from '../../screenIcons/liveFeedIcons/RF_Residual_Detection.svg';
 import bottleIconOSW from '../../screenIcons/liveFeedIcons/OSW.svg';
+import bottleIconBase from '../../screenIcons/liveFeedIcons/Base.svg';
+import bottleIconFinish from '../../screenIcons/liveFeedIcons/Finish.svg';
 
 import resolutionIcon from '../../screenIcons/liveFeedIcons/resolution.svg';
 import saveIcon from '../../screenIcons/liveFeedIcons/save.svg';
@@ -61,11 +63,12 @@ const displayBottleCount = computed(() => {
   return bottleCount.value === 4 ? "1, 2, 3" : bottleCount.value.toString();
 });
 
+const steps = [0, 2, 10, 120];
+let index = 0;
+
 function updateSeconds() {
-  seconds.value += 10;
-  if (seconds.value >= 60) {
-    seconds.value = 0;
-  }
+  index = (index + 1) % steps.length; // avanza en la lista y vuelve al inicio
+  seconds.value = steps[index];
 }
 
 const bottleImage = computed(() => {
@@ -87,7 +90,7 @@ const props = withDefaults(defineProps<{
     seconds?: boolean;
     save?: boolean;
   };
-  bottleType?: 'IR' | 'RF' | 'OSW' | 'VR';
+  bottleType?: 'IR' | 'RF' | 'OSW' | 'VR' | 'BASE' | 'FN';
 }>(), {
   enabledItems: () => ({
     bottle: true,
@@ -104,6 +107,8 @@ const bottleIcon = computed(() => {
   switch (props.bottleType) {
     case 'IR': return bottleIconIR;
     case 'RF': return bottleIconRF;
+    case 'BASE': return bottleIconBase;
+    case 'FN': return bottleIconFinish;
     default: return bottleIconOSW;
   }
 });
